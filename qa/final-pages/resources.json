@@ -1,0 +1,128 @@
+[
+  {
+    "file": "index.html",
+    "status": 200,
+    "bytes": 2828,
+    "sha256": "8f22e57ce69670209ef8e62e69d6ab69d719d68670a59625547ca4df2a97615b",
+    "matchesLocal": true
+  },
+  {
+    "file": "styles.css",
+    "status": 200,
+    "bytes": 45368,
+    "sha256": "55c862831fe8c33ed3eae13882dc426b44d583cd0b3d8ef189c2f4494c70e198",
+    "matchesLocal": true
+  },
+  {
+    "file": "app.js",
+    "status": 200,
+    "bytes": 41394,
+    "sha256": "f73ee70c3d2ba36ec67df6189b82f57526309c16cbe3bb231c0e11e1182c4cf5",
+    "matchesLocal": true
+  },
+  {
+    "file": "data/catalog.js",
+    "status": 200,
+    "bytes": 34388,
+    "sha256": "c6b33a0feb730608ceb397aa231e35026253024dea3d9735432bf5e2aa98e23b",
+    "matchesLocal": true
+  },
+  {
+    "file": "AGENTS.md",
+    "status": 200,
+    "bytes": 21172,
+    "sha256": "aa16a76a10c778f44c4d827df6bf13c11f792a5bce756ea499ff5d6908b9a885",
+    "matchesLocal": true
+  },
+  {
+    "file": "README.md",
+    "status": 200,
+    "bytes": 4431,
+    "sha256": "4edd05cfbf967c32016e56bca7c4c0d6854bffabec711035fc64a89f8b7d86cd",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/hero-banner.jpg",
+    "status": 200,
+    "bytes": 676904,
+    "sha256": "18dcbe9050a01735a6fc9ea3e29a591c80c4a26f2e32421bebd9230afa2a5c4e",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/boulevardier.jpg",
+    "status": 200,
+    "bytes": 955513,
+    "sha256": "153d1e632d784208eb5d9920e66e3bb02f4f22b8dbfe5cb894b0ff7c9403dd1f",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/cosmopolitan.jpg",
+    "status": 200,
+    "bytes": 901198,
+    "sha256": "f1d878a9a5ff5d859a8178eb26295166b78523152f231b8a9b7afb7cac5cfd62",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/daiquiri.jpg",
+    "status": 200,
+    "bytes": 1037569,
+    "sha256": "3891a8b653e4e5983f71d15051f13215e99f8c00d47b954cfc0265f768ca878a",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/espresso-martini.jpg",
+    "status": 200,
+    "bytes": 891835,
+    "sha256": "edab4ec07dde81e180856810b2c8bb900780818b852d0629d91205f4d63db75b",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/gin-fizz.jpg",
+    "status": 200,
+    "bytes": 417384,
+    "sha256": "1e1a540c360a8a3936608eee5a0e17d772d73c0ea98117c016b9a0adb6c91f78",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/manhattan.jpg",
+    "status": 200,
+    "bytes": 1001803,
+    "sha256": "a402ebc3a5e255378b530db94a42ecbe75ac3c276f892182c10034b045a18923",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/margarita.jpg",
+    "status": 200,
+    "bytes": 975102,
+    "sha256": "1c6a2cb5608b324599c2a3a9b0e3e6e3d797aff16c73d35e6cbe2bdfeccfaef2",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/negroni.jpg",
+    "status": 200,
+    "bytes": 979803,
+    "sha256": "6c045e439438280525b806079dcafd3c29a8d2bd8453ddb811d0266d7c36620f",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/paloma.jpg",
+    "status": 200,
+    "bytes": 1172139,
+    "sha256": "9bf29f306c4f98c33d55231a48ba995987fdb704be980eaa1ebab4268bbb50bb",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/spritz.jpg",
+    "status": 200,
+    "bytes": 1107979,
+    "sha256": "d4ddee70006ecc7d84c362dd271d69e9c2fa88b516ecc557820cf2d4aeee7f4d",
+    "matchesLocal": true
+  },
+  {
+    "file": "assets/cocktails/whiskey-sour.jpg",
+    "status": 200,
+    "bytes": 842700,
+    "sha256": "45c9826448b84ab72197ccd86c00af63d62d904bb94c4e67e7514158bfb4c52d",
+    "matchesLocal": true
+  }
+]

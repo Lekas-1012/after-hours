@@ -37,4 +37,15 @@
 
 ## 發布結果
 
-正式網址及測試結果於部署後補記；尚未確認的部署不計為通過。
+- Public Repository：https://github.com/Lekas-1012/after-hours
+- 已實際開啟的 HTTPS 網站：https://lekas-1012.github.io/after-hours/
+- 根目錄規範：https://github.com/Lekas-1012/after-hours/blob/main/AGENTS.md
+- 作業說明：https://github.com/Lekas-1012/after-hours/blob/main/SUBMISSION_TEMPLATE.md
+- Pages 設定：main、/（root）、public=true、https_enforced=true；最新程式部署 `2816de2` 的 Actions run `43860991099` 已 success。
+- 正式網址執行完整 Playwright：桌面 1440×1000、手機尺寸 390×844 的搜尋、分類、收藏保存、杯數換算、故事與材料、相關酒款、鍵盤與選單、實際 Sticky、視差、reduced motion 及水平溢出檢查全部 PASS。
+- 正常操作沒有 JavaScript pageerror、Console Error 或站內 HTTP 4xx/5xx；刻意製造的圖片失敗與恢復亦 PASS。先前故事延遲回呼錯誤已修正，重跑正式站成功。
+- 11 款酒譜詳情、4 篇故事、17 個材料頁皆已訪問；共 38 筆圖片驗證通過，Gin Fizz 卡片及詳情使用正式油畫。
+- 18 個部署資源（HTML、CSS、JS、catalog、README、AGENTS、Hero、全部 11 張酒款圖片）均 HTTP 200 且逐位元組符合本機來源；完整 SHA-256 在 `qa/final-pages/resources.json`。
+- 瀏覽器結果與實際截圖：`qa/final-pages/`。最後證據提交僅新增驗收檔案，不更動已測試的 runtime。
+- README 已包含公開連結，SUBMISSION_TEMPLATE.md 已填入作業所需的四項說明與三個連結，可直接參考繳交；未填入或猜測個人學號。
+- 沒有待使用者完成的發布操作。手機為 Chrome viewport 模擬，沒有測試真機 Safari；外部字體仍依賴 Google Fonts，提供系統字型回退。
