@@ -928,13 +928,13 @@ h1, h2, h3, p { margin-top: 0; }
   .about-columns h2 { font-size: 29px; }
 }
 
-/* A landscape canvas cannot survive portrait cover-cropping. Keep its story visible. */
+/* Keep copy and painting together as one immersive Hero at every width. */
 @media (max-width: 820px) {
-  .hero { display: block; min-height: 0; padding-top: 56vw; }
-  .hero-bg { inset: -24px 0 auto; height: calc(56vw + 24px); overflow: hidden; }
-  .hero-bg img { object-position: center; }
-  .hero-bg::after { background: none; }
-  .hero-content { width: calc(100% - 36px); padding: 32px 0 48px; }
+  .hero { display: flex; min-height: max(660px, calc(100svh - 84px)); padding-top: 0; }
+  .hero-bg { inset: -24px 0; height: auto; overflow: hidden; }
+  .hero-bg img { object-position: 64% center; }
+  .hero-bg::after { background: linear-gradient(0deg, rgba(26,20,16,.65), rgba(26,20,16,.25) 65%, transparent); }
+  .hero-content { width: calc(100% - 36px); padding: 64px 0 48px; opacity: 1; }
   .hero-content > * { max-width: 100%; }
   .hero .eyebrow { font-size: 9px; gap: 8px; letter-spacing: .12em; flex-wrap: wrap; }
   .hero-meta { margin-top: 28px; }

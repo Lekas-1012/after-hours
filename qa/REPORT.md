@@ -22,7 +22,7 @@
 
 使用內建 imagegen 生成琥珀色中間調牆面、酒吧拱門景深、右側杯組的新構圖；使用者確認「採用這張候選圖」後才正式替換。生成原件和完整 Prompt 在 `assets/candidates/`。正式 JPEG 1672×941，約 661 KiB，保留厚塗與暖光。
 
-桌面比例接近橫向原圖、文案置左；取消全幅濾鏡和橫向暗罩，只保留局部 radial 遮罩、文字陰影及底端 8% 過渡。標題改奶油白確保對比；手機使用橫幅畫作在上、文字在下。原 Hero 在 Git 備份中完整保留。
+桌面比例接近橫向原圖、文案置左；取消全幅濾鏡和橫向暗罩，只保留局部 radial 遮罩、文字陰影及底端 8% 過渡。標題改奶油白確保對比；手機依使用者後續指示，也讓文案疊在全高油畫背景上；獨立設定 64% 裁切焦點、下方漸層保護文案，保持文字不隨捲動淡出。原 Hero 在 Git 備份中完整保留。
 
 視差 tokens 未更動；250px 捲動時桌面背景 +12.5px、文案 −25px，手機 +8.75px／−17.5px。背景延伸邊界涵蓋既有最大位移。reduced motion 停止 transform 與淡出，保持文字可讀。
 
@@ -50,7 +50,7 @@
 - 桌面 story-stage sticky、章節切換、桌面與手機 Hero 差速、reduced motion：PASS。
 - 截圖關閉有限進場動畫以取得穩定畫面；互動測試保留正常動態。
 
-截圖：`hero-desktop.png`、`hero-mobile.png`、`collection-desktop.png`、`gin-card-desktop.png`、`gin-card-mobile.png`、`gin-detail-desktop.png`、`gin-detail-mobile.png`。已人工檢視 Hero 與 Gin Fizz 截圖；新 Hero 左側暖色筆觸清楚、酒杯不被標題壓住、手機保留橫向構圖。
+截圖：`hero-desktop.png`、`hero-mobile.png`、`collection-desktop.png`、`gin-card-desktop.png`、`gin-card-mobile.png`、`gin-detail-desktop.png`、`gin-detail-mobile.png`。已人工檢視 Hero 與 Gin Fizz 截圖；新 Hero 左側暖色筆觸清楚、酒杯不被標題壓住、手機文字與圖片同區呈現。
 
 限制：未驗證實際 GitHub Pages 部署、真機 Safari 或每一種視窗比例；原先使用者看到的 SVG 觸發條件仍未重現。新 Hero 素材已獲確認，整合後的最終審美仍可由使用者依交付截圖確認。
 
@@ -68,3 +68,7 @@ git worktree add ../after-hours-before b7df045
 若目錄已存在，選新的目錄名稱，不刪除它。這會在另一個資料夾提供完整舊版，包括原 Hero。
 
 需要在現有分支正式撤銷本次修正時，先保存後續修改，以 `git log --oneline` 找到 `fix: balance hero composition and unify cocktail image recovery` 的 commit，執行 `git revert <該修正commit>`；如有衝突，保留資料、逐項解決後再提交。不使用 reset --hard、clean 或 force push。
+
+## 後續修正：文字與圖片保持一起
+
+依使用者回饋，取消 820px 以下圖片在上、文字在下的安排，所有尺寸都使用 Hero 全幅背景加文字疊放。桌面維持原配置；手機保留較小視差與 reduced-motion，並移除文字捲動淡出。修改前還原點為 `c06fdad`。已更新 `AGENTS.md`，避免未來再拆開。
