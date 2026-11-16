@@ -54,29 +54,36 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 - 標題使用 `var(--serif)`（Playfair Display／Noto Serif TC），正文與 UI 使用 `var(--font)`（Noto Sans TC／系統字型）。
 - 最大內容寬度 1240px；桌面左右留白約 48px，手機約 18px。
 
-### 3.2 圖片
+### 3.2 藝術語言與場景
 
-- 酒款圖片為 `assets/cocktails/<cocktail-id>.jpg`，JPG、4:3、建議小於 1.2 MB。
-- 所有正式酒款圖片都必須是傳統油畫創作：可見實際筆觸、顏料肌理、自然混色與有故事性的暖色光影；必須先參考 `assets/cocktails/` 中既有油畫作品，維持同一藝術語言。
-- SVG、CSS、簡單幾何圖形、普通照片或「照片套油畫濾鏡」都不能視為正式油畫圖片；SVG fallback 只能作為缺圖時的執行期保護。
-- 風格參考圖只用來決定筆觸、顏料肌理、光影、色調、場景氛圍與構圖語言；不可複製參考圖的杯型、酒液、裝飾或其他酒款特徵。
-- 正式酒款圖片的實際外觀必須以該酒譜的 `vessel`、`liquid`、`garnish` 與材料資料為準，即使與風格參考圖不同，也不得為了構圖而改錯酒款特徵。
-- 圖片不得包含文字或浮水印。
-- 使用相對路徑與 `loading="lazy"`；缺圖時保留 app.js 的 SVG fallback。
-- 不得任意替換或刪除既有圖片，除非有明確品質或版權問題。
+- 正式酒款圖片是 `assets/cocktails/<cocktail-id>.jpg`，真正 JPEG、4:3、建議小於 1.2 MB；使用相對路徑。
+- **Style Reference** 只定義傳統厚塗油畫、可見顏料筆觸、自然光影反射、復古暖色與景深。**Cocktail Subject** 獨立依酒譜的 `vessel`、`liquid`、`garnish`、材料及冰塊描述決定，不能複製參考酒款。
+- 統一藝術語言，不統一背景。每次新增前先看現有圖片，選擇符合文化、風味與敘事的不同場景，同時改變視角、道具和光源；不可只在同一構圖替換酒杯。
+- 場景可選義大利咖啡館、古典酒吧、紐約飯店酒廊、海邊露台、雨夜街景、法式餐館、燭光吧台、書房壁爐、花園、屋頂或藝術靜物，不限於此。復古列車只是選項，不能作為預設。
+- Negroni 可探索義大利 aperitivo；Manhattan 可探索紐約酒廊；Martini 可探索都會飯店；Margarita 可探索海邊；Old Fashioned 可探索書房或木質吧台，均非固定模板。
+- 禁止扁平向量、SVG 轉 JPG、普通商品照、照片套濾鏡、3D 塑膠渲染、霓虹科技場景冒充正式油畫。格式轉換不是風格生成。
+- 無文字、商標或浮水印；先確認參考圖來源與使用權限。
+- `assets/cocktails/gin-fizz.jpg` 是已驗收的火車窗邊、淡金氣泡高球與檸檬油畫，保持原件；不得任意替換其他已驗收圖片。
 
-### 3.3 Image Production & Quality Assurance
+### 3.3 圖片整合與驗收
 
-- 新增圖片前，先確認生成工具、參考圖的來源與使用權限；不可把未授權的他人圖片或商標當作素材。
-- 圖片生成必須同時確認：傳統油畫筆觸與肌理、暖色深木質場景、故事性構圖、正確 `vessel`、接近 `liquid` 的酒液色、正確 `garnish`、無文字與無浮水印。
-- 生成 Prompt 應分開描述「Style reference」與「Cocktail subject」：前者限定藝術語言，後者限定該酒款的杯型、酒液、冰塊、裝飾與可辨識細節。
-- 技術驗收至少包含 JPG 格式、4:3 比例、檔案大小、相對路徑、HTTP 載入、`naturalWidth`／`naturalHeight` 與手機／桌面版顯示。
-- 技術驗收不等於視覺驗收；正式合併前必須以瀏覽器或截圖檢查筆觸、光影、構圖與既有作品的一致性。
-- 若環境沒有真正的圖片生成工具，AI 必須提供可執行的生成 Prompt 與待確認狀態，不得用 SVG、CSS、簡單圖形或普通照片宣稱完成。
-- 圖片尚未經使用者或設計驗收時，必須明確標示為「待視覺驗收／技術暫存」；不可因格式正確、尺寸正確或能載入就視為正式成品。
-- `assets/cocktails/gin-fizz.jpg` 已完成 Gin Fizz 杯型、酒液、氣泡、檸檬裝飾與油畫風格的視覺驗收；未來若替換，仍須重新完成同一套驗收。
+- 所有卡片（首頁、搜尋、分類、收藏、相關推薦）、詳情、精選與故事圖片都使用 `cocktailImgSrc()` 路徑及 `cocktailImage()` 模板，不另維護酒款特例或內嵌 onerror。
+- 共用模板保留 `<img>` 和預設 `hidden` 的 `.image-fallback`。只有真正的 error 才隱藏圖片、顯示 SVG；load 必須恢復圖片並隱藏 fallback。不得刪掉原圖節點或讓 fallback 覆蓋正常油畫。保留其他缺圖酒款的容錯。
+- 非首屏圖片 lazy loading，詳情主圖 eager。不得把所有圖片強制預載來掩蓋事件問題。
+- 以 `file assets/cocktails/*.jpg`、`sips -g pixelWidth -g pixelHeight <圖片>` 和 `ls -lh` 檢查實際格式、尺寸比例、大小。歷史圖片約 4:3（1200×896）可保留，新增使用精確 4:3。
+- 用 HTTP 在 GitHub Pages 子路徑驗證，Playwright 檢查列表與詳情的 `currentSrc`、`complete`、`naturalWidth`、`naturalHeight`、fallback 可見性；還需驗證搜尋、篩選、收藏、推薦、缺圖降級及圖片恢復。
+- 技術通過不代表美術通過。桌面／手機實際截圖需檢查油畫肌理、酒款真實性、構圖、裁切、光影、風格一致性。
+- 沒有真正生成工具時提供完整 Prompt 並標示待確認，不得用 SVG、照片或格式轉換冒充成品。有工具則先生成候選，未獲使用者確認不得替換正式 Hero；未完成美術驗收的候選獨立放在 `assets/candidates/`。
 
-### 3.3 RWD
+### 3.4 Hero 構圖
+
+- 先看原圖：光暗分布、主體與標題空間、桌面／手機比例，再設計文字位置。不得只反覆調 brightness、scale、object-position。
+- 標題放在平靜區域，酒杯與環境保有完整敘事；遮罩只局部保護文字，搭配文字陰影，不壓黑半幅油畫，不使用破壞顏料色彩的濾鏡。
+- 桌面 Hero 比例接近橫向原畫，手機優先橫向畫作在上、文案在下，避免 portrait cover 把故事裁掉。仍需檢查各種視窗尺寸與文字可讀性。
+- 若素材本身有大片暗牆，CSS 無法還原不存在的細節；保留原圖並提出更均衡光線的新構圖候選，待確認後更換，不無限疊濾鏡補救。
+- 修改後交付桌面／手機截圖與尚未解決的設計限制。保留第 4 節視差係數、背景慢於文字、無露白／跳動、Sticky storytelling 與 reduced-motion 回退。
+
+### 3.5 RWD
 
 | 寬度 | 規則 |
 |---|---|
@@ -85,7 +92,7 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 | 550–820px | 酒譜兩欄、detail hero 單欄 |
 | <550px | 酒譜單欄、Sticky story 降級流式、展示列可觸控橫滑 |
 
-手機不得水平溢出；水平 Scroll Snap 只能套用於自己的展示容器，不能劫持整頁捲動。
+手機不得水平溢出；水平 Scroll Snap 只套用於自己的展示容器，不劫持整頁捲動。
 
 ## 4. Motion & Interaction
 
@@ -175,7 +182,7 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 2. 先新增 `content/recipes/<id>.json`，確認欄位、來源、比例、杯型、酒液色與裝飾。
 3. 若材料不存在，先新增到 `ingredients.json`；再於 `relations.json` 建立 cocktail id、ingredient ids、相關酒款及可用 story id，不可建立死連結。
 4. 若有故事，新增至少三段可查證章節至 `stories.json`，並以 relation 的 `storyId` 連回酒款。
-5. 依本節 Image Production & Quality Assurance 產生或取得有權限的油畫 JPG；沒有生成工具時先停在「待視覺驗收」，不可用技術暫存冒充完成。
+5. 依第 3 節圖片製作與驗收規範 產生或取得有權限的油畫 JPG；沒有生成工具時先停在「待視覺驗收」，不可用技術暫存冒充完成。
 6. 執行 `node scripts/build.mjs`、`node scripts/test.mjs`，確認 `data/catalog.js` 同步。
 7. 先做圖片技術與視覺驗收，再做桌面與手機的搜尋、篩選、卡片、詳細頁、故事、來源、份量與水平溢出檢查。
 
@@ -195,13 +202,22 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 
 禁止直接編輯 `data/catalog.js`、刪除既有內容、修改無關酒譜比例、引入不必要框架或服務。外觀優先修改 `styles.css`，資料優先修改 `content/`。
 
-## 7. Testing & Deployment
+## 7. Git 安全規則
+
+- 大型修改前先 `git status --short --branch`，確認正確專案，讀取規範、README 與相關程式／資料／圖片。
+- 無 Repository 才 `git init`；既有歷史不可覆寫。檢查 `.gitignore` 與待提交清單，排除敏感資訊、API Keys、系統暫存與依賴，保留酒譜、故事、材料、圖片與規範。
+- 功能修改前建立可還原的 backup commit，重大修改在獨立分支完成。不得擅自丟棄使用者變更。
+- 禁止未核准的 `git reset --hard`、`git clean -fd`、force push、改寫 commit 或刪除資料。不自動建立遠端或推送。
+- 修改後完成 build/test 和瀏覽器驗收才建立修正 commit，回報前後 commit ID、分支、未完成項目與還原方法。
+- 安全檢視舊版使用 `git worktree add ../after-hours-before <backup-commit>`，不影響目前工作區；正式撤銷已提交修正前先保存新修改，再使用 `git revert <fix-commit>` 建立反向 commit，保留歷史。
+
+## 8. Testing & Deployment
 
 ### 本機
 
 ```bash
 python3 -m http.server 8000
-node scripts/build.mjs
+node scripts/build.mjs --check
 node scripts/test.mjs
 ```
 
@@ -221,7 +237,7 @@ node scripts/test.mjs
 
 若測試工具、Node.js 或瀏覽器不可用，必須明確列出未驗證項目，不得宣稱通過。
 
-## 8. Phase 2 Roadmap
+## 9. Phase 2 Roadmap
 
 第一階段完成後，再依序規劃：
 

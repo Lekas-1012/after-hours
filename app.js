@@ -33,6 +33,11 @@
     return `./assets/cocktails/${encodeURIComponent(id)}.jpg`;
   }
 
+  // Keep the real image in the DOM: a later successful load must clear fallback.
+  function cocktailImage(c, {className = '', loading = 'lazy', hero = false} = {}) {
+    return `<img class="${className}" src="${esc(cocktailImgSrc(c.id))}" alt="${esc(c.nameZh)} — ${esc(c.name)} 油畫風格插圖" loading="${loading}" data-fallback-id="${esc(c.id)}"><div class="image-fallback" hidden>${svgArt(c, hero)}</div>`;
+  }
+
   /* ---------- SVG Art (Fallback when image doesn't exist) ---------- */
   function citrus(type, x, y, scale=1) {
     const palette = { orange:['#efac55','#fff0c1'], lime:['#92bf76','#e5ecc2'], lemon:['#e8cf80','#fff0c2'] };
@@ -89,10 +94,9 @@
 
   /* ---------- Card Visual ---------- */
   function cardVisual(c) {
-    const imgSrc = cocktailImgSrc(c.id);
     return `<div class="card-visual">
       <div class="card-img-wrap">
-        <img src="${esc(imgSrc)}" alt="${esc(c.nameZh)} — ${esc(c.name)} 油畫風格插圖" loading="lazy" data-fallback-id="${esc(c.id)}"/>
+        ${cocktailImage(c)}
       </div>
       <span class="card-index">Nº ${String(c.order).padStart(2,'0')}</span>
     </div>`;
@@ -100,10 +104,8 @@
 
   /* ---------- Detail Art Visual ---------- */
   function detailArt(c) {
-    const imgSrc = cocktailImgSrc(c.id);
     return `<div class="detail-art-col">
-      <img class="detail-painting" src="${esc(imgSrc)}" alt="${esc(c.nameZh)} — ${esc(c.name)} 油畫風格插圖" data-detail-fallback="true" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"/>
-      <div style="display:none">${svgArt(c,true)}</div>
+      ${cocktailImage(c, {className: 'detail-painting', loading: 'eager', hero: true})}
       <span class="detail-glass-caption">SERVE IN · ${esc(c.glass)}</span>
     </div>`;
   }
@@ -144,7 +146,7 @@
       </section>
       <section class="story-section" aria-labelledby="story-title"><div class="wrap story-layout">
         <div class="story-sticky"><div class="section-eyebrow">01 — A POUR IN MOTION</div><div class="story-art" id="story-art">${cardVisual(feature)}</div><div class="story-copy"><p class="story-kicker" id="story-kicker">${esc(feature.base)} · ${esc(feature.method)}</p><h2 id="story-title">${esc(feature.name)}</h2><p id="story-description">${esc(feature.description)}</p><a class="text-link" id="story-link" href="#/cocktail/${encodeURIComponent(feature.id)}">閱讀酒譜 <span>↗</span></a><a class="story-teaser-link" href="#/stories">進入調酒故事館 <span>↗</span></a></div></div>
-        <div class="showcase-rail" id="showcase-rail" aria-label="精選調酒展示">${catalog.slice(0,6).map((c,i)=>`<button class="showcase-card ${i===0?'is-active':''}" type="button" data-showcase="${esc(c.id)}"><span class="showcase-number">${String(c.order).padStart(2,'0')}</span><img src="${esc(cocktailImgSrc(c.id))}" alt="${esc(c.nameZh)} 油畫插圖" loading="lazy"><strong>${esc(c.name)}</strong><small>${esc(c.nameZh)}</small></button>`).join('')}</div>
+        <div class="showcase-rail" id="showcase-rail" aria-label="精選調酒展示">${catalog.slice(0,6).map((c,i)=>`<button class="showcase-card ${i===0?'is-active':''}" type="button" data-showcase="${esc(c.id)}"><span class="showcase-number">${String(c.order).padStart(2,'0')}</span>${cocktailImage(c)}<strong>${esc(c.name)}</strong><small>${esc(c.nameZh)}</small></button>`).join('')}</div>
       </div></section>
       <section class="catalog-section" id="discover" aria-labelledby="discover-title"><div class="wrap"><div class="section-eyebrow">01 — THE COLLECTION</div>
       <div class="section-heading"><div><h2 id="discover-title">調酒圖鑑 <span class="serif-italic">/ The Collection</span></h2><p>從酸甜、苦甜，到有個性的經典配方。</p></div><span class="section-counter">EXPLORE THE CLASSICS <span>↘</span></span></div>
@@ -288,14 +290,14 @@
   }
   function storyTeaser(story) {
     const cocktail = cocktailById(story.cocktailId);
-    return `<a class="story-card" href="#/story/${encodeURIComponent(story.id)}"><div class="story-card-image"><img src="${esc(cocktailImgSrc(story.imageCocktailId))}" alt="${esc(cocktail?.nameZh || story.title)} 油畫插圖" loading="lazy"></div><div class="story-card-body"><span>${esc(cocktail?.name || 'COCKTAIL STORY')}</span><h2>${esc(story.title)}</h2><p>${esc(story.subtitle)}</p><b>閱讀故事 ↗</b></div></a>`;
+    return `<a class="story-card" href="#/story/${encodeURIComponent(story.id)}"><div class="story-card-image">${cocktailImage(cocktailById(story.imageCocktailId))}</div><div class="story-card-body"><span>${esc(cocktail?.name || 'COCKTAIL STORY')}</span><h2>${esc(story.title)}</h2><p>${esc(story.subtitle)}</p><b>閱讀故事 ↗</b></div></a>`;
   }
   function storiesPage() {
     view.innerHTML = `<div class="inner-page stories-page"><div class="page-hero wrap"><a class="back-link" href="#/">← 返回調酒圖鑑</a><div class="section-eyebrow">THE ARCHIVE / STORIES</div><h1>一杯酒的<span class="serif-italic">來處。</span></h1><p>從配方、文化與可靠來源出發，慢慢讀懂經典調酒如何被記住。</p></div><section class="wrap story-index-grid">${storyCatalog.map(storyTeaser).join('')}</section></div>`;
   }
   function storyPage(story) {
     const cocktail = cocktailById(story.cocktailId);
-    view.innerHTML = `<div class="story-page"><section class="story-reader-hero wrap"><a class="back-link" href="#/stories">← 返回故事館</a><div class="section-eyebrow">COCKTAIL STORY / ${esc(cocktail?.name || '')}</div><h1>${esc(story.title)}</h1><p>${esc(story.subtitle)}</p></section><section class="story-reader" data-story-id="${esc(story.id)}"><div class="wrap story-reader-layout"><div class="story-stage" aria-live="polite"><div class="story-stage-art"><img data-fallback-id="${esc(story.imageCocktailId)}" src="${esc(cocktailImgSrc(story.imageCocktailId))}" alt="${esc(cocktail?.nameZh || story.title)} 油畫插圖"></div><div class="story-stage-copy"><span id="story-stage-type">${esc(story.sections[0].type)}</span><h2 id="story-stage-title">${esc(story.sections[0].title)}</h2><p id="story-stage-body">${esc(story.sections[0].body)}</p></div><div class="story-stage-progress"><span></span></div></div><div class="story-chapters">${story.sections.map((section,index)=>`<article class="story-chapter ${index===0?'is-active':''}" data-story-chapter="${index}" tabindex="0"><span>${String(index+1).padStart(2,'0')}</span><div><small>${esc(section.type)}</small><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p></div></article>`).join('')}<div class="story-sources"><span>可查證資料</span>${story.sources.map(source=>`<a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">${esc(source.label)} ↗</a>`).join('')}</div></div></div></section><section class="wrap story-related"><div class="section-eyebrow">CONTINUE EXPLORING</div><h2>沿著這杯酒，再走遠一點。</h2><div class="cards-grid">${story.relatedCocktailIds.map(cocktailById).filter(Boolean).map((item,index)=>card(item,index*35)).join('')}</div></section></div>`;
+    view.innerHTML = `<div class="story-page"><section class="story-reader-hero wrap"><a class="back-link" href="#/stories">← 返回故事館</a><div class="section-eyebrow">COCKTAIL STORY / ${esc(cocktail?.name || '')}</div><h1>${esc(story.title)}</h1><p>${esc(story.subtitle)}</p></section><section class="story-reader" data-story-id="${esc(story.id)}"><div class="wrap story-reader-layout"><div class="story-stage" aria-live="polite"><div class="story-stage-art">${cocktailImage(cocktailById(story.imageCocktailId), {loading: 'eager'})}</div><div class="story-stage-copy"><span id="story-stage-type">${esc(story.sections[0].type)}</span><h2 id="story-stage-title">${esc(story.sections[0].title)}</h2><p id="story-stage-body">${esc(story.sections[0].body)}</p></div><div class="story-stage-progress"><span></span></div></div><div class="story-chapters">${story.sections.map((section,index)=>`<article class="story-chapter ${index===0?'is-active':''}" data-story-chapter="${index}" tabindex="0"><span>${String(index+1).padStart(2,'0')}</span><div><small>${esc(section.type)}</small><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p></div></article>`).join('')}<div class="story-sources"><span>可查證資料</span>${story.sources.map(source=>`<a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">${esc(source.label)} ↗</a>`).join('')}</div></div></div></section><section class="wrap story-related"><div class="section-eyebrow">CONTINUE EXPLORING</div><h2>沿著這杯酒，再走遠一點。</h2><div class="cards-grid">${story.relatedCocktailIds.map(cocktailById).filter(Boolean).map((item,index)=>card(item,index*35)).join('')}</div></section></div>`;
     setupStoryEffects(story);
   }
   function setupStoryEffects(story) {
@@ -374,12 +376,15 @@
       renderFlavorResults();
     }
   });
-  view.addEventListener('error', e => {
-    const image = e.target.closest?.('img[data-fallback-id]');
-    if (!image) return;
-    const cocktail = catalog.find(c => c.id === image.dataset.fallbackId);
-    if (cocktail) image.parentElement.outerHTML = svgArt(cocktail);
-  }, true);
+  function setImageFallback(image, failed) {
+    if (!image?.matches?.('img[data-fallback-id]')) return;
+    const fallback = image.nextElementSibling;
+    if (!fallback?.classList.contains('image-fallback')) return;
+    image.hidden = failed;
+    fallback.hidden = !failed;
+  }
+  view.addEventListener('error', e => setImageFallback(e.target, true), true);
+  view.addEventListener('load', e => setImageFallback(e.target, false), true);
   document.querySelector('.menu-toggle').addEventListener('click', e => {
     const open = e.currentTarget.getAttribute('aria-expanded') === 'true';
     e.currentTarget.setAttribute('aria-expanded', String(!open));

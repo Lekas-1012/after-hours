@@ -1,0 +1,243 @@
+{
+  "base": "http://127.0.0.1:8016/after-hours/",
+  "images": [
+    {
+      "label": "search desktop",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "filters desktop",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "favorites desktop",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "detail desktop",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "related desktop",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/daiquiri.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "search mobile",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "filters mobile",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "favorites mobile",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "detail mobile",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "related mobile",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/daiquiri.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/negroni.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/margarita.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/daiquiri.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/whiskey-sour.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/cosmopolitan.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/espresso-martini.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/paloma.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/boulevardier.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/spritz.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/manhattan.jpg",
+      "complete": true,
+      "naturalWidth": 1200,
+      "naturalHeight": 896,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "collection",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "recovered after request failure",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg?recovery-test=1",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    },
+    {
+      "label": "detail recovered",
+      "src": "http://127.0.0.1:8016/after-hours/assets/cocktails/gin-fizz.jpg?recovery-test=2",
+      "complete": true,
+      "naturalWidth": 1024,
+      "naturalHeight": 768,
+      "hidden": false,
+      "fallbackHidden": true,
+      "svgVisible": false
+    }
+  ],
+  "checks": [
+    "desktop parallax {\"bg\":\"matrix(1, 0, 0, 1, 0, 12.5)\",\"copy\":\"matrix(1, 0, 0, 1, 0, -25)\"}",
+    "desktop: search, base/flavor filters, persisted favorites, servings 1/2/4, ingredient/recommendation/story links, keyboard chapters, menu, no overflow, no JS errors",
+    "mobile parallax {\"bg\":\"matrix(1, 0, 0, 1, 0, 8.75)\",\"copy\":\"matrix(1, 0, 0, 1, 0, -17.5)\"}",
+    "mobile: search, base/flavor filters, persisted favorites, servings 1/2/4, ingredient/recommendation/story links, keyboard chapters, menu, no overflow, no JS errors",
+    "real request failure and successful recovery: card and detail",
+    "reduced motion: no hero transforms or scroll fading"
+  ]
+}

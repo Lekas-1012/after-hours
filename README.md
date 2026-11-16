@@ -6,7 +6,7 @@
 
 ## 特色
 
-- 10 款經典調酒與獨立的詳情連結（`#/cocktail/酒名-id`）
+- 11 款經典調酒與獨立的詳情連結（`#/cocktail/酒名-id`）
 - 每款調酒配有獨立的**油畫風格原創插圖**，場景各異（義大利廣場、古巴酒吧、巴黎小酒館等）
 - 首頁大幅油畫 Hero 視覺，沉浸式藝術氛圍
 - 中文／英文名稱、材料、風味可搜尋
@@ -14,7 +14,7 @@
 - Scroll-driven Hero、Sticky 油畫展示與 Scroll Snap 調酒畫廊
 - localStorage 收藏與依風味偏好排序的探索工具
 - 可鍵盤操作、支援 reduced motion 的浮動導覽與手機選單
-- 調酒故事館：Negroni、Daiquiri、Margarita 的可查證捲動故事
+- 調酒故事館：Gin Fizz、Negroni、Daiquiri、Margarita 的可查證捲動故事
 - 材料百科與穩定 Ingredient ID 關聯
 - 明確定義的相關調酒探索，不使用隨機推薦
 - 材料份量換算與調製步驟
@@ -97,3 +97,25 @@ scripts/test.mjs        基本結構與資料測試
 
 - 專案為學習用途。所有酒譜可透過詳細頁面的來源連結查證，中文文字經過編輯整理。
 - 飲酒須遵守當地法定年齡規定。酒後不開車。
+
+## 本次視覺修復與版本管理
+
+正式維護目錄為 `/Users/lekas/VScode/after-hours`。請勿與 Downloads 中缺少 assets 的舊副本混用。
+
+- 修改前備份：`b7df045`；修正分支：`fix/hero-and-cocktail-images`。
+- 新 Hero 已由使用者確認採用，原件與 Prompt 在 `assets/candidates/`；舊圖可由 Git 備份取回。
+- 圖片由共用模板提供可恢復的 SVG 容錯；圖片成功時 fallback 必須隱藏。
+- 調酒油畫統一筆觸與光影，但場景按酒款分別設計，不預設列車背景。
+- 詳細驗收、已知限制與安全恢復方式：[qa/REPORT.md](qa/REPORT.md)。
+
+技術與瀏覽器檢查（先在專案的父目錄啟動 HTTP 伺服器，模擬 Pages 子路徑）：
+
+```sh
+node scripts/build.mjs --check
+node scripts/test.mjs
+# 在另一個終端執行：python3 -m http.server 8016 --bind 127.0.0.1 --directory ..
+npm install --prefix /tmp/after-hours-qa playwright
+PLAYWRIGHT_MODULE=/tmp/after-hours-qa/node_modules/playwright/index.mjs node scripts/browser-test.mjs
+```
+
+瀏覽器驗收使用已安裝的 Google Chrome（Playwright `channel: chrome`）；工具依賴在暫存目錄，不加入網站 runtime。可設定 `QA_BASE_URL`，預設 `http://127.0.0.1:8016/after-hours/`。證據輸出在 `qa/`。
