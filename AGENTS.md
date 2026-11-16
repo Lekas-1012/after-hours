@@ -101,7 +101,7 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 
 - Hero 使用 `requestAnimationFrame` 節流的 scroll progress，將 `--scroll-y`、`--hero-progress` 交給 CSS 做縮放、視差、透明度與 progress indicator。
 - 視差係數集中在 `styles.css` 的 `--parallax-*` tokens；背景速度必須低於前景文字，手機使用較小係數，調整時只做小幅增量並檢查是否露白或晃動。
-- Story stage 使用 `position: sticky`，章節以 `IntersectionObserver` 切換文字與進度；故事結束後恢復正常流式捲動。
+- Story stage 使用 `position: sticky`，章節以 `IntersectionObserver` 切換文字與進度；故事結束後恢復正常流式捲動。離開故事路由先 disconnect Observer，延遲回呼須確認原頁仍在 DOM，避免更新已移除的元素。Sticky 需以實際捲動座標驗證，外層不得使用會建立錯誤捲動祖先的 overflow: hidden。
 - Story stage 的圖片與文字可使用 `--story-scroll-progress` 做小幅相對位移，但不可改變容器尺寸或阻礙章節閱讀。
 - 精選展示可使用 Sticky 左側與 Observer／Scroll Snap 右側切換酒款；不將整個網站做成強制分鏡。
 - 優先使用 `transform`、`opacity`、`filter`、CSS transition；標準 easing 是 `cubic-bezier(.22, 1, .36, 1)`。

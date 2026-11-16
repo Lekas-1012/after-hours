@@ -22,7 +22,7 @@ try {
  for (const [device,width,height] of [['desktop',1440,1000],['mobile',390,844]]) {
   const context=await browser.newContext({viewport:{width,height}});
   const page=await context.newPage(); const errors=[]; page.on('pageerror',e=>errors.push(e.message));
-  page.on('console',m=>{if(m.type()==='error') errors.push(m.text())});
+  page.on('console',m=>{if(m.type()==='error') errors.push(m.text()+' '+m.location().url)});
   page.on('response',r=>{if(r.url().startsWith(base) && r.status()>=400) errors.push(`${r.status()} ${r.url()}`)});
   await route(page,'#/'); await page.locator('.hero-bg img').evaluate(i=>i.decode()); await page.screenshot({animations:'disabled',path:`${out}/hero-${device}.png`});
   const initial=await page.locator('.hero-bg').evaluate(e=>getComputedStyle(e).transform);

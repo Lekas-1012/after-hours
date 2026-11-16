@@ -12,7 +12,8 @@
 2. `.site-shell { overflow: hidden }` 建立錯誤的捲動祖先，使 Sticky 樣式存在但實際不固定。改為 `overflow: clip`；以捲動後 topbar=0px、story-stage=105px 驗證，不只看 computed position。
 3. reduced motion 原本未停用 `.story-stage-art` 容器位移，補入既有回退規則。
 4. 新增小型品牌 favicon，避免 Chrome 預設 `/favicon.ico` 404 與 Console Error。
-5. 整理 AGENTS.md 的資料格式、列舉、材料 null 佔位、實際 RWD、驗收、Git 及 Pages 流程；README 改為精簡課堂介紹；SUBMISSION_TEMPLATE.md 提供專案簡介、連結及 AI 擴充方式。
+5. 正式站驗收抓到故事 Observer 的延遲回呼在路由離開後操作已刪除 DOM，造成 Console Error；路由切換先 disconnect，回呼也確認原頁仍連接 DOM。
+6. 整理 AGENTS.md 的資料格式、列舉、材料 null 佔位、實際 RWD、驗收、Git 及 Pages 流程；README 改為精簡課堂介紹；SUBMISSION_TEMPLATE.md 提供專案簡介、連結及 AI 擴充方式。
 
 ## 本機驗收
 

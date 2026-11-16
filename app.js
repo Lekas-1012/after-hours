@@ -9,6 +9,7 @@
   const view = document.querySelector('#view');
   const state = { search: '', base: '全部', flavor: '全部', servings: 1, flavorProfile: { acidity: 2, sweetness: 2, bitterness: 2, spirit: 2 } };
   const favoriteKey = 'after-hours:favorites';
+  let storyObserver = null;
   let storedFavorites = [];
   try { storedFavorites = JSON.parse(localStorage.getItem(favoriteKey) || '[]'); }
   catch (error) { console.warn('Unable to read saved favorites.', error); }
@@ -301,8 +302,10 @@
     setupStoryEffects(story);
   }
   function setupStoryEffects(story) {
+    const reader = document.querySelector('.story-reader');
     const chapters = [...document.querySelectorAll('[data-story-chapter]')];
     const update = index => {
+      if (!reader.isConnected) return;
       const section = story.sections[index];
       if (!section) return;
       chapters.forEach((chapter, chapterIndex) => chapter.classList.toggle('is-active', chapterIndex === index));
@@ -316,6 +319,7 @@
     const observer = new IntersectionObserver(entries => {
       entries.filter(entry => entry.isIntersecting).forEach(entry => update(Number(entry.target.dataset.storyChapter)));
     }, { threshold: .55 });
+    storyObserver = observer;
     chapters.forEach(chapter => observer.observe(chapter));
   }
   function ingredientsPage() {
@@ -333,6 +337,8 @@
 
   /* ---------- Router ---------- */
   function navigate() {
+    storyObserver?.disconnect();
+    storyObserver = null;
     const route = decodeURIComponent(location.hash.replace(/^#/, '') || '/');
     document.querySelectorAll('[data-nav]').forEach(a => {
       const target = a.getAttribute('href').slice(1);
