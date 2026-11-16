@@ -1,0 +1,52 @@
+{
+  "id": "paloma",
+  "name": "Paloma",
+  "nameZh": "帕洛瑪",
+  "subtitle": "清爽的葡萄柚氣泡",
+  "description": "以龍舌蘭為基底，加上葡萄柚汽水與少許萊姆，風味明亮不厚重。",
+  "base": "龍舌蘭",
+  "flavors": [
+    "氣泡",
+    "柑橘"
+  ],
+  "difficulty": "入門",
+  "method": "直調",
+  "glass": "高球杯",
+  "prepMinutes": 3,
+  "liquid": "#d98e7b",
+  "vessel": "highball",
+  "garnish": "lime",
+  "ingredients": [
+    {
+      "name": "100% 龍舌蘭酒",
+      "amount": 50,
+      "unit": "ml"
+    },
+    {
+      "name": "新鮮萊姆汁",
+      "amount": 5,
+      "unit": "ml"
+    },
+    {
+      "name": "葡萄柚汽水",
+      "amount": 100,
+      "unit": "ml"
+    },
+    {
+      "name": "鹽",
+      "amount": null,
+      "unit": "少許"
+    }
+  ],
+  "steps": [
+    "在高球杯倒入龍舌蘭和萊姆汁。",
+    "加入冰塊與少許鹽。",
+    "倒入葡萄柚汽水，輕輕攪勻並以萊姆片裝飾。"
+  ],
+  "tip": "葡萄柚汽水的甜度與苦度各有差異，可依品牌調整。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/paloma/"
+  },
+  "order": 7
+}

@@ -1,0 +1,47 @@
+{
+  "id": "boulevardier",
+  "name": "Boulevardier",
+  "nameZh": "林蔭大道",
+  "subtitle": "威士忌版的苦甜大人味",
+  "description": "讓威士忌取代琴酒，帶來更厚實的穀物、木質與苦甜尾韻。",
+  "base": "威士忌",
+  "flavors": [
+    "苦甜",
+    "濃郁"
+  ],
+  "difficulty": "中等",
+  "method": "攪拌",
+  "glass": "雞尾酒杯",
+  "prepMinutes": 4,
+  "liquid": "#a54630",
+  "vessel": "coupe",
+  "garnish": "orange",
+  "ingredients": [
+    {
+      "name": "波本或裸麥威士忌",
+      "amount": 45,
+      "unit": "ml"
+    },
+    {
+      "name": "Campari 苦味利口酒",
+      "amount": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "甜紅苦艾酒",
+      "amount": 30,
+      "unit": "ml"
+    }
+  ],
+  "steps": [
+    "將所有材料與冰塊倒入攪拌杯。",
+    "充分攪拌至冰冷。",
+    "濾入冰鎮過的雞尾酒杯，以柳橙皮裝飾。"
+  ],
+  "tip": "喜歡 Negroni、又偏愛威士忌的人值得比較看看。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/boulevardier/"
+  },
+  "order": 8
+}

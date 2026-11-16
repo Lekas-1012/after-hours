@@ -1,0 +1,47 @@
+{
+  "id": "daiquiri",
+  "name": "Daiquiri",
+  "nameZh": "黛綺莉",
+  "subtitle": "簡單，卻很講究",
+  "description": "白蘭姆、萊姆與糖構成漂亮的酸甜平衡，是理解搖盪系調酒的起點。",
+  "base": "蘭姆酒",
+  "flavors": [
+    "酸爽",
+    "清新"
+  ],
+  "difficulty": "入門",
+  "method": "搖盪",
+  "glass": "雞尾酒杯",
+  "prepMinutes": 4,
+  "liquid": "#d7d09a",
+  "vessel": "coupe",
+  "garnish": "lime",
+  "ingredients": [
+    {
+      "name": "白蘭姆酒",
+      "amount": 60,
+      "unit": "ml"
+    },
+    {
+      "name": "新鮮萊姆汁",
+      "amount": 20,
+      "unit": "ml"
+    },
+    {
+      "name": "細砂糖",
+      "amount": 2,
+      "unit": "吧匙"
+    }
+  ],
+  "steps": [
+    "把蘭姆酒、萊姆汁與糖放入雪克杯，攪拌至糖溶解。",
+    "加入冰塊後充分搖盪。",
+    "濾入冰鎮過的雞尾酒杯。"
+  ],
+  "tip": "萊姆酸度與糖的溶解程度會直接影響平衡。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/daiquiri/"
+  },
+  "order": 3
+}

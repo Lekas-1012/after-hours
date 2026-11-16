@@ -1,0 +1,240 @@
+[
+  {
+    "id": "club-soda",
+    "name": "Club Soda",
+    "nameZh": "蘇打水",
+    "category": "氣泡飲料",
+    "summary": "中性且帶氣泡的調飲材料，能拉長酒體並帶來清爽口感。",
+    "flavors": ["氣泡", "清新"],
+    "history": "蘇打水是高球與 Fizz 類調酒常見的最後補充材料；氣泡量與礦物感會影響飲用時的輕盈度。",
+    "uses": ["Gin Fizz", "Tom Collins", "Highball"],
+    "relatedIngredientIds": ["gin", "lemon-juice", "simple-syrup"],
+    "sources": [
+      {"label": "IBA — Gin Fizz", "url": "https://iba-world.com/iba-cocktail/gin-fizz/"}
+    ]
+  },
+  {
+    "id": "cranberry-juice",
+    "name": "Cranberry Juice",
+    "nameZh": "蔓越莓汁",
+    "category": "果汁",
+    "summary": "帶有明亮酸度與莓果色澤的果汁，常用於平衡柑橘與基酒。",
+    "flavors": ["果香", "酸爽"],
+    "history": "蔓越莓汁在北美酒吧文化中常見，Cosmopolitan 讓它成為廣為人知的調酒材料。",
+    "uses": ["Cosmopolitan", "Cape Codder"],
+    "relatedIngredientIds": ["vodka", "lime-juice", "triple-sec"],
+    "sources": [
+      {"label": "IBA — Cosmopolitan", "url": "https://iba-world.com/iba-cocktail/cosmopolitan/"}
+    ]
+  },
+  {
+    "id": "orange-bitters",
+    "name": "Orange Bitters",
+    "nameZh": "橙味苦精",
+    "category": "苦精",
+    "summary": "以橙皮與香料為主的苦精，少量可增加柑橘香氣與尾韻。",
+    "flavors": ["柑橘", "苦甜"],
+    "history": "橙味苦精是早期雞尾酒配方常見的調味工具之一，現代酒吧仍用它修飾琴酒與加強酒。",
+    "uses": ["Martini", "Negroni variation"],
+    "relatedIngredientIds": ["campari", "gin", "sweet-vermouth"],
+    "sources": [
+      {"label": "Difford's Guide — orange bitters", "url": "https://www.diffordsguide.com/beer-wine-spirits/category/112/bitters"}
+    ]
+  },
+  {
+    "id": "gin",
+    "name": "Gin",
+    "nameZh": "琴酒",
+    "category": "基酒",
+    "summary": "以杜松子與植物香氣為核心的蒸餾酒，風格可從乾爽辛香到花果調。",
+    "flavors": ["草本", "柑橘", "清新"],
+    "history": "琴酒的現代風格與英國蒸餾傳統密切相關；不同品牌會以杜松子以外的植物材料建立自己的香氣輪廓。",
+    "uses": ["Martini", "Negroni", "Gin & Tonic"],
+    "relatedIngredientIds": ["campari", "sweet-vermouth", "lime-juice"],
+    "sources": [
+      {"label": "Encyclopaedia Britannica — gin", "url": "https://www.britannica.com/topic/gin-liquor"}
+    ]
+  },
+  {
+    "id": "white-rum",
+    "name": "White Rum",
+    "nameZh": "白蘭姆酒",
+    "category": "基酒",
+    "summary": "酒體輕盈、帶有甘蔗與熱帶果香，常用於需要明亮酸度的配方。",
+    "flavors": ["清新", "果香"],
+    "history": "蘭姆酒源於甘蔗產業與加勒比海蒸餾文化；白蘭姆通常經過過濾，保留乾淨的風味表現。",
+    "uses": ["Daiquiri", "Mojito", "Piña Colada"],
+    "relatedIngredientIds": ["lime-juice", "simple-syrup"],
+    "sources": [
+      {"label": "Encyclopaedia Britannica — rum", "url": "https://www.britannica.com/topic/rum"}
+    ]
+  },
+  {
+    "id": "whiskey",
+    "name": "Whiskey",
+    "nameZh": "威士忌",
+    "category": "基酒",
+    "summary": "以穀物蒸餾並經木桶熟成的酒類，常帶有木質、香料、焦糖或煙燻氣息。",
+    "flavors": ["濃郁", "草本"],
+    "history": "威士忌包含多個地域與製程傳統；配方中的 bourbon、rye 與 Scotch 會帶來不同甜感、辛香與煙燻程度。",
+    "uses": ["Manhattan", "Whiskey Sour", "Boulevardier"],
+    "relatedIngredientIds": ["sweet-vermouth", "angostura-bitters", "lemon-juice"],
+    "sources": [
+      {"label": "Encyclopaedia Britannica — whisky", "url": "https://www.britannica.com/topic/whisky"}
+    ]
+  },
+  {
+    "id": "tequila",
+    "name": "Tequila",
+    "nameZh": "龍舌蘭酒",
+    "category": "基酒",
+    "summary": "以藍色龍舌蘭為原料的墨西哥蒸餾酒，帶有植物、胡椒與柑橘調性。",
+    "flavors": ["草本", "柑橘"],
+    "history": "龍舌蘭酒受墨西哥產區與法規定義影響，blanco、reposado 等熟成差異會改變其木質與香料表現。",
+    "uses": ["Margarita", "Paloma", "Tequila Sunrise"],
+    "relatedIngredientIds": ["lime-juice", "triple-sec", "grapefruit-soda"],
+    "sources": [
+      {"label": "Encyclopaedia Britannica — tequila", "url": "https://www.britannica.com/topic/tequila"}
+    ]
+  },
+  {
+    "id": "vodka",
+    "name": "Vodka",
+    "nameZh": "伏特加",
+    "category": "基酒",
+    "summary": "風味相對中性的蒸餾酒，能讓果汁、咖啡與香甜酒成為配方主角。",
+    "flavors": ["清新", "濃郁"],
+    "history": "伏特加在東歐與北歐有長久的蒸餾傳統；現代調酒常利用它乾淨的酒體承接其他材料。",
+    "uses": ["Cosmopolitan", "Espresso Martini", "Moscow Mule"],
+    "relatedIngredientIds": ["triple-sec", "cranberry-juice", "coffee-liqueur"],
+    "sources": [
+      {"label": "Encyclopaedia Britannica — vodka", "url": "https://www.britannica.com/topic/vodka"}
+    ]
+  },
+  {
+    "id": "sweet-vermouth",
+    "name": "Sweet Vermouth",
+    "nameZh": "甜紅苦艾酒",
+    "category": "加強酒",
+    "summary": "以葡萄酒為基礎、加入植物與香料浸漬的加強酒，提供甜感、草本與香料層次。",
+    "flavors": ["甜潤", "草本", "苦甜"],
+    "history": "苦艾酒屬於 aromatized wine；義大利甜型苦艾酒在 Negroni、Manhattan 等經典配方中扮演重要的平衡角色。",
+    "uses": ["Negroni", "Manhattan", "Boulevardier"],
+    "relatedIngredientIds": ["gin", "campari", "whiskey"],
+    "sources": [
+      {"label": "Encyclopaedia Britannica — vermouth", "url": "https://www.britannica.com/topic/vermouth"}
+    ]
+  },
+  {
+    "id": "campari",
+    "name": "Campari",
+    "nameZh": "Campari 苦味利口酒",
+    "category": "苦味利口酒",
+    "summary": "具有鮮明苦味、柑橘與草本氣息的義大利苦味利口酒。",
+    "flavors": ["苦甜", "柑橘", "草本"],
+    "history": "Campari 由 Gaspare Campari 在十九世紀義大利創製，後來成為多款 aperitivo 與經典調酒的核心材料。",
+    "uses": ["Negroni", "Boulevardier", "Americano"],
+    "relatedIngredientIds": ["sweet-vermouth", "gin", "orange-bitters"],
+    "sources": [
+      {"label": "Campari — Our history", "url": "https://www.campari.com/our-world/our-history/"}
+    ]
+  },
+  {
+    "id": "angostura-bitters",
+    "name": "Angostura Bitters",
+    "nameZh": "Angostura 苦精",
+    "category": "苦精",
+    "summary": "濃縮的香料型苦精，少量即可增加香氣、苦味與結構。",
+    "flavors": ["苦甜", "草本"],
+    "history": "Angostura aromatic bitters 由 Dr. Johann Gottlieb Benjamin Siegert 在十九世紀創製，最初與消化用途相關，後成為酒吧常備材料。",
+    "uses": ["Manhattan", "Old Fashioned", "Pisco Sour"],
+    "relatedIngredientIds": ["whiskey", "sweet-vermouth", "simple-syrup"],
+    "sources": [
+      {"label": "Angostura — Our history", "url": "https://angosturabitters.com/our-story/"}
+    ]
+  },
+  {
+    "id": "lime-juice",
+    "name": "Fresh Lime Juice",
+    "nameZh": "新鮮萊姆汁",
+    "category": "果汁",
+    "summary": "提供鮮明酸度與柑橘香氣，是平衡甜味與基酒的重要材料。",
+    "flavors": ["酸爽", "柑橘"],
+    "history": "萊姆與長途航海、熱帶飲食及加勒比海調酒文化都有密切關係；新鮮榨汁能保留更清楚的香氣。",
+    "uses": ["Daiquiri", "Margarita", "Cosmopolitan"],
+    "relatedIngredientIds": ["white-rum", "tequila", "simple-syrup"],
+    "sources": [
+      {"label": "IBA — Daiquiri", "url": "https://iba-world.com/iba-cocktail/daiquiri/"}
+    ]
+  },
+  {
+    "id": "lemon-juice",
+    "name": "Fresh Lemon Juice",
+    "nameZh": "新鮮檸檬汁",
+    "category": "果汁",
+    "summary": "酸度直接、香氣明亮，常用來支撐 sour 類調酒的骨架。",
+    "flavors": ["酸爽", "柑橘"],
+    "history": "檸檬汁是 sour 類調酒的經典酸味來源，與糖漿和烈酒形成基本的酸甜結構。",
+    "uses": ["Whiskey Sour", "Tom Collins", "Sidecar"],
+    "relatedIngredientIds": ["whiskey", "simple-syrup", "vodka"],
+    "sources": [
+      {"label": "IBA — Whiskey Sour", "url": "https://iba-world.com/iba-cocktail/whiskey-sour/"}
+    ]
+  },
+  {
+    "id": "simple-syrup",
+    "name": "Simple Syrup",
+    "nameZh": "糖漿",
+    "category": "甜味劑",
+    "summary": "糖與水製成的液態甜味劑，能均勻融入冷飲並修飾酸度。",
+    "flavors": ["甜潤"],
+    "history": "糖漿是現代酒吧中最基本的調味工具之一；濃度與原料差異會影響甜度、口感與保存方式。",
+    "uses": ["Daiquiri", "Whiskey Sour", "Tom Collins"],
+    "relatedIngredientIds": ["lime-juice", "lemon-juice", "white-rum"],
+    "sources": [
+      {"label": "IBA — Daiquiri", "url": "https://iba-world.com/iba-cocktail/daiquiri/"}
+    ]
+  },
+  {
+    "id": "triple-sec",
+    "name": "Triple Sec",
+    "nameZh": "橙酒",
+    "category": "果香利口酒",
+    "summary": "以橙皮為核心的透明橙味利口酒，帶來柑橘香氣與甜度。",
+    "flavors": ["柑橘", "甜潤"],
+    "history": "Triple sec 是橙味利口酒的一類名稱；不同品牌與版本的甜度、酒精度和橙皮苦香會有所差異。",
+    "uses": ["Margarita", "Cosmopolitan", "Sidecar"],
+    "relatedIngredientIds": ["tequila", "lime-juice", "vodka"],
+    "sources": [
+      {"label": "IBA — Margarita", "url": "https://iba-world.com/iba-cocktail/margarita/"}
+    ]
+  },
+  {
+    "id": "coffee-liqueur",
+    "name": "Coffee Liqueur",
+    "nameZh": "咖啡利口酒",
+    "category": "利口酒",
+    "summary": "以咖啡、糖與烈酒構成的甜型利口酒，提供烘焙與焦糖氣息。",
+    "flavors": ["咖啡", "甜潤"],
+    "history": "咖啡利口酒在二十世紀酒吧文化中普及，常與伏特加、奶油或新鮮咖啡組合。",
+    "uses": ["Espresso Martini", "White Russian", "Black Russian"],
+    "relatedIngredientIds": ["vodka", "simple-syrup"],
+    "sources": [
+      {"label": "IBA — Espresso Martini", "url": "https://iba-world.com/iba-cocktail/espresso-martini/"}
+    ]
+  },
+  {
+    "id": "grapefruit-soda",
+    "name": "Grapefruit Soda",
+    "nameZh": "葡萄柚汽水",
+    "category": "汽水",
+    "summary": "帶有葡萄柚苦香與氣泡感，讓高球型調酒變得清爽。",
+    "flavors": ["氣泡", "柑橘", "苦甜"],
+    "history": "Paloma 的起源與配方版本存在多種說法；葡萄柚汽水是現代常見版本中的關鍵長飲材料。",
+    "uses": ["Paloma"],
+    "relatedIngredientIds": ["tequila", "lime-juice"],
+    "sources": [
+      {"label": "IBA — Paloma", "url": "https://iba-world.com/iba-cocktail/paloma/"}
+    ]
+  }
+]

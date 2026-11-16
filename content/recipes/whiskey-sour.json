@@ -1,0 +1,47 @@
+{
+  "id": "whiskey-sour",
+  "name": "Whiskey Sour",
+  "nameZh": "威士忌酸酒",
+  "subtitle": "酸甜中留一點木質感",
+  "description": "波本威士忌的香草與木質調性，搭配檸檬與糖漿，口感扎實又清爽。",
+  "base": "威士忌",
+  "flavors": [
+    "酸爽",
+    "甜潤"
+  ],
+  "difficulty": "中等",
+  "method": "搖盪",
+  "glass": "古典杯",
+  "prepMinutes": 5,
+  "liquid": "#c68c43",
+  "vessel": "rocks",
+  "garnish": "orange",
+  "ingredients": [
+    {
+      "name": "波本威士忌",
+      "amount": 45,
+      "unit": "ml"
+    },
+    {
+      "name": "新鮮檸檬汁",
+      "amount": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "糖漿",
+      "amount": 20,
+      "unit": "ml"
+    }
+  ],
+  "steps": [
+    "將所有材料加冰放入雪克杯。",
+    "搖盪至冰冷後濾入杯中；也可搭配新冰塊飲用。",
+    "以柳橙片或檸檬皮裝飾。"
+  ],
+  "tip": "這裡採不加蛋白的版本；IBA 另列蛋白為可選材料。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/whiskey-sour/"
+  },
+  "order": 4
+}

@@ -1,0 +1,30 @@
+{
+  "id": "gin-fizz",
+  "name": "Gin Fizz",
+  "nameZh": "琴費士",
+  "subtitle": "氣泡把琴酒拉得更輕盈",
+  "description": "琴酒、檸檬與糖漿建立清楚的酸甜骨架，再以蘇打水拉長成細緻爽口的高球。",
+  "base": "琴酒",
+  "flavors": ["酸爽", "氣泡", "清新"],
+  "difficulty": "入門",
+  "method": "搖盪",
+  "glass": "高球杯",
+  "prepMinutes": 5,
+  "liquid": "#d9d3b0",
+  "vessel": "highball",
+  "garnish": "lemon",
+  "ingredients": [
+    {"name": "琴酒", "amount": 45, "unit": "ml"},
+    {"name": "新鮮檸檬汁", "amount": 30, "unit": "ml"},
+    {"name": "糖漿", "amount": 10, "unit": "ml"},
+    {"name": "蘇打水", "amount": null, "unit": "補滿"}
+  ],
+  "steps": [
+    "將琴酒、檸檬汁與糖漿加冰放入雪克杯。",
+    "搖盪至冰冷後，濾入裝有新冰的高球杯。",
+    "以蘇打水補滿，輕輕提拉混合，再以檸檬片裝飾。"
+  ],
+  "tip": "蘇打水依杯型與冰量調整至補滿，不另推算固定 ml；最後輕混可保留氣泡。",
+  "source": {"label": "IBA 官方配方", "url": "https://iba-world.com/iba-cocktail/gin-fizz/"},
+  "order": 11
+}

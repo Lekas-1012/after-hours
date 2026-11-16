@@ -1,0 +1,47 @@
+{
+  "id": "negroni",
+  "name": "Negroni",
+  "nameZh": "內格羅尼",
+  "subtitle": "經典的苦甜平衡",
+  "description": "琴酒的植物香氣、苦艾酒的甜潤與 Campari 的鮮明苦味，三種個性剛好相遇。",
+  "base": "琴酒",
+  "flavors": [
+    "苦甜",
+    "草本"
+  ],
+  "difficulty": "入門",
+  "method": "直調",
+  "glass": "古典杯",
+  "prepMinutes": 3,
+  "liquid": "#b9422d",
+  "vessel": "rocks",
+  "garnish": "orange",
+  "ingredients": [
+    {
+      "name": "琴酒",
+      "amount": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "Campari 苦味利口酒",
+      "amount": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "甜紅苦艾酒",
+      "amount": 30,
+      "unit": "ml"
+    }
+  ],
+  "steps": [
+    "在古典杯中加入足量冰塊。",
+    "依序倒入琴酒、Campari 與甜紅苦艾酒。",
+    "使用吧匙輕輕攪拌，放上半片柳橙裝飾。"
+  ],
+  "tip": "苦味明顯是它的特色，適合想認識經典苦甜風味的人。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/negroni/"
+  },
+  "order": 1
+}

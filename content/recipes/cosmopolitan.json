@@ -1,0 +1,52 @@
+{
+  "id": "cosmopolitan",
+  "name": "Cosmopolitan",
+  "nameZh": "柯夢波丹",
+  "subtitle": "莓果色澤，柑橘靈魂",
+  "description": "蔓越莓讓色澤很亮眼；伏特加、橙酒、萊姆帶出乾淨的酸甜輪廓。",
+  "base": "伏特加",
+  "flavors": [
+    "果香",
+    "酸爽"
+  ],
+  "difficulty": "入門",
+  "method": "搖盪",
+  "glass": "雞尾酒杯",
+  "prepMinutes": 4,
+  "liquid": "#c74d68",
+  "vessel": "coupe",
+  "garnish": "lemon",
+  "ingredients": [
+    {
+      "name": "檸檬風味伏特加",
+      "amount": 40,
+      "unit": "ml"
+    },
+    {
+      "name": "君度橙酒",
+      "amount": 15,
+      "unit": "ml"
+    },
+    {
+      "name": "新鮮萊姆汁",
+      "amount": 15,
+      "unit": "ml"
+    },
+    {
+      "name": "蔓越莓汁",
+      "amount": 30,
+      "unit": "ml"
+    }
+  ],
+  "steps": [
+    "所有材料加入裝有冰塊的雪克杯。",
+    "充分搖盪。",
+    "濾入冰鎮過的雞尾酒杯，擠上檸檬皮精油裝飾。"
+  ],
+  "tip": "蔓越莓汁的甜度可能因品牌而不同。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/cosmopolitan/"
+  },
+  "order": 5
+}

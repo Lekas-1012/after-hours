@@ -1,0 +1,70 @@
+[
+  {
+    "id": "story-gin-fizz",
+    "cocktailId": "gin-fizz",
+    "title": "Gin Fizz：氣泡如何改變一杯 sour",
+    "subtitle": "從琴酒、檸檬與糖的骨架，理解 Fizz 類調酒的清爽結構。",
+    "imageCocktailId": "gin-fizz",
+    "sections": [
+      {"title": "酸甜骨架與氣泡", "body": "Gin Fizz 以琴酒、檸檬汁與糖漿建立 sour 的酸甜骨架，再用蘇打水補足氣泡與長度；因此每一項材料都清楚可辨。", "type": "recipe"},
+      {"title": "Fizz 名稱的脈絡", "body": "Fizz 是十九世紀酒吧文化中逐漸普及的一類長飲形式，通常以烈酒、柑橘、甜味與蘇打水組合；不同時期與酒吧會有比例差異，不能把單一版本視為唯一原型。", "type": "history"},
+      {"title": "從 Gin Fizz 延伸", "body": "Gin Fizz 與 Collins 類調酒共享琴酒、檸檬與氣泡的方向，但製作方式與比例可能不同。這種材料關係也說明了為何氣泡水應在最後加入並輕混。", "type": "culture"}
+    ],
+    "relatedCocktailIds": ["daiquiri", "whiskey-sour", "paloma"],
+    "sources": [
+      {"label": "IBA — Gin Fizz", "url": "https://iba-world.com/iba-cocktail/gin-fizz/"},
+      {"label": "Encyclopaedia Britannica — Fizz", "url": "https://www.britannica.com/topic/fizz"}
+    ]
+  },
+  {
+    "id": "story-negroni",
+    "cocktailId": "negroni",
+    "title": "Negroni：苦味如何成為一種平衡",
+    "subtitle": "從佛羅倫斯的 aperitivo 文化，讀懂一杯經典的結構。",
+    "imageCocktailId": "negroni",
+    "sections": [
+      {"title": "一杯酒，三種方向", "body": "Negroni 以琴酒、Campari 與甜紅苦艾酒組成。草本、苦味與甜潤彼此拉扯，最後在相等比例中形成清楚而穩定的結構。", "type": "recipe"},
+      {"title": "常見的起源說法", "body": "最廣為流傳的說法，將它與 1919 年佛羅倫斯的 Caffè Casoni 及 Camillo Negroni 伯爵聯繫在一起；但早期文獻與細節仍有討論，因此這裡以「常見說法」呈現，而非絕對定論。", "type": "history"},
+      {"title": "從 aperitivo 到世界酒吧", "body": "Negroni 延續義大利 aperitivo 在餐前以苦味刺激食慾、放慢節奏的文化。它也成為許多變體的母題，例如以威士忌替換琴酒的 Boulevardier。", "type": "culture"}
+    ],
+    "relatedCocktailIds": ["boulevardier", "manhattan"],
+    "sources": [
+      {"label": "IBA — Negroni", "url": "https://iba-world.com/iba-cocktail/negroni/"},
+      {"label": "Campari — Negroni", "url": "https://www.campari.com/our-world/negroni/"}
+    ]
+  },
+  {
+    "id": "story-daiquiri",
+    "cocktailId": "daiquiri",
+    "title": "Daiquiri：酸、甜與蘭姆酒的清楚對話",
+    "subtitle": "一杯看似簡單的 sour，如何成為經典比例的教科書。",
+    "imageCocktailId": "daiquiri",
+    "sections": [
+      {"title": "三個材料的骨架", "body": "Daiquiri 的基本邏輯是蘭姆酒、萊姆汁與糖。酸度提供張力，糖負責平衡，蘭姆酒則把甘蔗與熱帶果香帶進杯中。", "type": "recipe"},
+      {"title": "與古巴礦區的連結", "body": "Daiquiri 通常被認為與古巴東部 Daiquirí 礦區及二十世紀初的美國工程與酒吧社群有關；確切的最初調製者與傳播路徑仍有不同記載。", "type": "history"},
+      {"title": "簡潔不等於容易", "body": "因為材料很少，冰溫、稀釋、萊姆酸度與糖漿濃度都會直接改變結果。這也是 Daiquiri 適合用來理解 Shake 與 sour 平衡的原因。", "type": "technique"}
+    ],
+    "relatedCocktailIds": ["margarita", "whiskey-sour"],
+    "sources": [
+      {"label": "IBA — Daiquiri", "url": "https://iba-world.com/iba-cocktail/daiquiri/"},
+      {"label": "Encyclopaedia Britannica — Daiquiri", "url": "https://www.britannica.com/topic/Daiquiri"}
+    ]
+  },
+  {
+    "id": "story-margarita",
+    "cocktailId": "margarita",
+    "title": "Margarita：一杯有多種起源版本的酸香",
+    "subtitle": "從龍舌蘭、橙酒與萊姆汁，走進墨西哥風味的現代經典。",
+    "imageCocktailId": "margarita",
+    "sections": [
+      {"title": "酸香與鹽邊", "body": "Margarita 以龍舌蘭酒、橙酒與萊姆汁建立清楚的酸甜結構；鹽邊不是裝飾而已，也會改變入口時的酸度與甜感知覺。", "type": "recipe"},
+      {"title": "起源並非只有一個答案", "body": "Margarita 的起源有多個流傳版本，涉及墨西哥不同地點、酒吧與人物；目前沒有單一版本能被所有資料一致證明，因此本頁將它們視為起源傳說與常見說法。", "type": "history"},
+      {"title": "從酒吧經典到全球變體", "body": "不同橙酒、龍舌蘭熟成與酸甜比例會帶來截然不同的風格。Frozen、spicy 或加入果泥的版本，都是在經典三角結構上延伸。", "type": "culture"}
+    ],
+    "relatedCocktailIds": ["paloma", "cosmopolitan", "daiquiri"],
+    "sources": [
+      {"label": "IBA — Margarita", "url": "https://iba-world.com/iba-cocktail/margarita/"},
+      {"label": "Encyclopaedia Britannica — Margarita", "url": "https://www.britannica.com/topic/Margarita-cocktail"}
+    ]
+  }
+]

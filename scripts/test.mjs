@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+execFileSync(process.execPath, [path.join(root,'scripts','build.mjs'), '--check'], {stdio:'inherit'});
+const data = fs.readFileSync(path.join(root,'data','catalog.js'),'utf8');
+const readWindowData = name => JSON.parse(data.match(new RegExp(`window\\.${name} = ([\\s\\S]*?);\\n`))?.[1] || 'null');
+const records = readWindowData('COCKTAIL_CATALOG');
+const ingredients = readWindowData('INGREDIENT_CATALOG');
+const stories = readWindowData('STORY_CATALOG');
+const relations = readWindowData('COCKTAIL_RELATIONS');
+assert.ok(records.length >= 5, 'Should have at least 5 sample recipes');
+assert.ok(ingredients.length >= 10, 'Ingredient encyclopedia required');
+assert.ok(stories.length >= 3, 'At least three story records required');
+const names = new Set();
+for(const record of records) {
+  assert.ok(!names.has(record.id), 'Unique recipe ids');
+  names.add(record.id);
+  assert.ok(record.source.url.startsWith('https://'), 'Linked source required');
+  assert.ok(record.ingredients.length >= 2, 'Ingredients required');
+  assert.ok(record.steps.length >= 2, 'Steps required');
+  assert.ok(fs.existsSync(path.join(root,'content','recipes',`${record.id}.json`)),'Original JSON required');
+  assert.ok(relations[record.id], 'Cocktail relation required');
+}
+const html = fs.readFileSync(path.join(root,'index.html'),'utf8');
+for(const file of ['./styles.css','./app.js','./data/catalog.js']) assert.ok(html.includes(file), `Missing ${file}`);
+const js = fs.readFileSync(path.join(root,'app.js'),'utf8');
+for(const feature of ['#/cocktail/', '#/story/', '#/ingredient/', 'recipe-search', 'data-filter', 'data-servings', 'location.hash', 'localStorage', 'IntersectionObserver', 'data-showcase', 'flavorProfile', 'setupStoryEffects']) assert.ok(js.includes(feature), `Missing ${feature}`);
+for(const feature of ['menu-toggle', 'primary-navigation', '#/favorites', '#/stories', '#/ingredients']) assert.ok(html.includes(feature), `Missing ${feature}`);
+const css = fs.readFileSync(path.join(root,'styles.css'),'utf8');
+for(const feature of ['scroll-snap-type', 'backdrop-filter', 'prefers-reduced-motion', 'story-sticky', 'story-stage', 'ingredient-card']) assert.ok(css.includes(feature), `Missing ${feature}`);
+console.log(`PASS: ${records.length} recipes, ${ingredients.length} ingredients and ${stories.length} stories validated; entry and application structure are present.`);

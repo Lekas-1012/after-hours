@@ -1,0 +1,47 @@
+{
+  "id": "manhattan",
+  "name": "Manhattan",
+  "nameZh": "曼哈頓",
+  "subtitle": "簡練的經典威士忌香",
+  "description": "裸麥威士忌、甜紅苦艾酒與苦精，攪拌出銳利且優雅的尾韻。",
+  "base": "威士忌",
+  "flavors": [
+    "草本",
+    "濃郁"
+  ],
+  "difficulty": "中等",
+  "method": "攪拌",
+  "glass": "雞尾酒杯",
+  "prepMinutes": 4,
+  "liquid": "#9f3f36",
+  "vessel": "coupe",
+  "garnish": "cherry",
+  "ingredients": [
+    {
+      "name": "裸麥威士忌",
+      "amount": 50,
+      "unit": "ml"
+    },
+    {
+      "name": "甜紅苦艾酒",
+      "amount": 20,
+      "unit": "ml"
+    },
+    {
+      "name": "Angostura 苦精",
+      "amount": 1,
+      "unit": "dash"
+    }
+  ],
+  "steps": [
+    "將材料加入裝有冰塊的攪拌杯。",
+    "攪拌至冰冷，濾入冰鎮的雞尾酒杯。",
+    "以一顆雞尾酒櫻桃裝飾。"
+  ],
+  "tip": "攪拌而非搖盪，能讓酒體維持清澈。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/manhattan/"
+  },
+  "order": 10
+}

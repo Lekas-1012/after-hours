@@ -1,0 +1,24 @@
+{
+  "id": "gin-fizz",
+  "name": "Gin Fizz",
+  "nameZh": "琴費士",
+  "subtitle": "請替換成一句簡短的風味描述",
+  "description": "請替換成 1 到 2 句調酒特色介紹。",
+  "base": "琴酒",
+  "flavors": ["酸爽", "氣泡"],
+  "difficulty": "入門",
+  "method": "搖盪",
+  "glass": "高球杯",
+  "prepMinutes": 4,
+  "liquid": "#d6c890",
+  "vessel": "highball",
+  "garnish": "lemon",
+  "ingredients": [
+    {"name": "材料一（請替換）", "amount": 30, "unit": "ml"},
+    {"name": "材料二（請替換）", "amount": 15, "unit": "ml"}
+  ],
+  "steps": ["步驟一（請替換）", "步驟二（請替換）"],
+  "tip": "補充關於風味或調製的注意事項。",
+  "source": {"label": "請填寫真實資料來源", "url": "https://example.com/replace-this"},
+  "order": 11
+}

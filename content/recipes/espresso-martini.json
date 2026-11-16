@@ -1,0 +1,52 @@
+{
+  "id": "espresso-martini",
+  "name": "Espresso Martini",
+  "nameZh": "濃縮咖啡馬丁尼",
+  "subtitle": "咖啡香氣與綿密泡沫",
+  "description": "咖啡、伏特加與咖啡利口酒交疊出深色的甜苦風味。",
+  "base": "伏特加",
+  "flavors": [
+    "咖啡",
+    "甜潤"
+  ],
+  "difficulty": "中等",
+  "method": "搖盪",
+  "glass": "雞尾酒杯",
+  "prepMinutes": 5,
+  "liquid": "#69452e",
+  "vessel": "coupe",
+  "garnish": "coffee",
+  "ingredients": [
+    {
+      "name": "伏特加",
+      "amount": 50,
+      "unit": "ml"
+    },
+    {
+      "name": "咖啡利口酒",
+      "amount": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "糖漿",
+      "amount": 10,
+      "unit": "ml"
+    },
+    {
+      "name": "濃縮咖啡",
+      "amount": 1,
+      "unit": "份"
+    }
+  ],
+  "steps": [
+    "預先冰鎮雞尾酒杯。",
+    "將全部材料和冰塊倒入雪克杯，充分搖盪。",
+    "濾入杯中，以三顆咖啡豆點綴。"
+  ],
+  "tip": "新鮮濃縮咖啡與充分搖盪有助於形成漂亮泡沫。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/espresso-martini/"
+  },
+  "order": 6
+}

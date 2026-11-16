@@ -1,0 +1,47 @@
+{
+  "id": "margarita",
+  "name": "Margarita",
+  "nameZh": "瑪格麗特",
+  "subtitle": "一口明亮的酸香",
+  "description": "龍舌蘭、橙酒和新鮮萊姆的俐落組合，簡單卻很有辨識度。",
+  "base": "龍舌蘭",
+  "flavors": [
+    "酸爽",
+    "柑橘"
+  ],
+  "difficulty": "入門",
+  "method": "搖盪",
+  "glass": "雞尾酒杯",
+  "prepMinutes": 4,
+  "liquid": "#c3c874",
+  "vessel": "coupe",
+  "garnish": "lime",
+  "ingredients": [
+    {
+      "name": "100% 龍舌蘭酒",
+      "amount": 50,
+      "unit": "ml"
+    },
+    {
+      "name": "橙酒 Triple Sec",
+      "amount": 20,
+      "unit": "ml"
+    },
+    {
+      "name": "新鮮萊姆汁",
+      "amount": 15,
+      "unit": "ml"
+    }
+  ],
+  "steps": [
+    "可先將杯緣的一半沾上細鹽。",
+    "把所有材料與冰塊加入雪克杯。",
+    "充分搖盪後濾入冰鎮過的雞尾酒杯。"
+  ],
+  "tip": "半圈鹽口是可選做法；先喝原味，再試著搭配鹽口。",
+  "source": {
+    "label": "IBA 官方配方",
+    "url": "https://iba-world.com/iba-cocktail/margarita/"
+  },
+  "order": 2
+}
