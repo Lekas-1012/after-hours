@@ -39,7 +39,8 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 │   └── cocktails/<cocktail-id>.jpg
 └── scripts/
     ├── build.mjs                      # 驗證並產生 data/catalog.js
-    └── test.mjs                       # 資料、路由、互動與樣式結構測試
+    ├── test.mjs                       # 資料與程式結構檢查（不是瀏覽器測試）
+    └── browser-test.mjs               # Playwright 實際互動、圖片與截圖驗收
 ```
 
 內容與版型分離：新增酒款、材料或故事不得複製 HTML 頁面；應新增 JSON，讓 `app.js` 的共用模板產生畫面。
@@ -88,9 +89,9 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 | 寬度 | 規則 |
 |---|---|
 | >1120px | 酒譜三欄、完整 Sticky 展示 |
-| 820–1120px | 酒譜兩欄、隱藏 topbar note |
-| 550–820px | 酒譜兩欄、detail hero 單欄 |
-| <550px | 酒譜單欄、Sticky story 降級流式、展示列可觸控橫滑 |
+| 820–1120px | 酒譜卡片仍三欄、隱藏 topbar note |
+| 550–820px | 酒譜兩欄、detail hero 單欄、故事舞台降級流式、手機選單 |
+| <550px | 酒譜單欄、材料與故事索引單欄、展示列可觸控橫滑 |
 
 手機不得水平溢出；水平 Scroll Snap 只套用於自己的展示容器，不劫持整頁捲動。
 
@@ -127,9 +128,17 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 
 酒譜檔案位於 `content/recipes/<id>.json`，`id` 必須是小寫 kebab-case 且與檔名一致。必要欄位：
 
-`name`、`nameZh`、`subtitle`、`description`、`base`、`flavors`、`difficulty`、`method`、`glass`、`prepMinutes`、`liquid`、`vessel`、`garnish`、`ingredients`、`steps`、`tip`、`source`、`order`。
+`id`、`name`、`nameZh`、`subtitle`、`description`、`base`、`flavors`、`difficulty`、`method`、`glass`、`prepMinutes`、`liquid`、`vessel`、`garnish`、`ingredients`、`steps`、`tip`、`source`、`order`。
 
-材料 `amount` 必須是正數或 `null`；來源 URL 必須 HTTPS；至少兩項材料與兩個完整步驟；不可擅自推算沒有來源支持的比例。
+材料格式為 `{ "name": "琴酒", "amount": 45, "unit": "ml" }`；amount 必須是正數或 null，null 代表少許／補滿等不隨杯數數值換算的材料。來源格式為 `{ "label": "來源名稱", "url": "https://…" }`。至少兩項材料與兩個非空步驟；不可擅自推算沒有來源支持的比例。
+
+- `order`：不重複的正整數；`prepMinutes`：1–120 的整數；`liquid`：六位十六進位色碼。
+- `base`：琴酒／龍舌蘭／蘭姆酒／威士忌／伏特加／氣泡酒。
+- `difficulty`：入門／中等／進階；`method`：直調／搖盪／攪拌。
+- `vessel`：rocks／coupe／highball／wine；`garnish`：orange／lime／lemon／coffee／cherry／mint／none。
+- `flavors`：1–3 項，從苦甜／草本／酸爽／柑橘／清新／甜潤／果香／咖啡／氣泡／濃郁選取。
+- 範本內的 id 與 order 只是例子，複製後必須改成未使用的值。新值如超出列舉，先有意識地同步 build 驗證與必要的顯示支援，不可只填未支援字串。
+
 
 ### 5.2 Ingredient
 
@@ -150,11 +159,13 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 }
 ```
 
+材料檔案是物件陣列；id 為唯一小寫 kebab-case。flavors、uses、relatedIngredientIds 為非空字串陣列；sources 至少一個且 URL 為 HTTPS。uses 是展示用途文字，不是網站酒譜 ID，不保證每項都有收錄酒譜。實際使用該材料的酒譜由 relations 反查。
+
 顯示名稱可以修訂，但 `id` 不可因文案變更而改動。無詳細資料的材料暫時不要建立虛構百科頁；酒譜可在 relations 中不連結，UI 必須顯示純文字而非無效連結。
 
 ### 5.3 Story
 
-`content/encyclopedia/stories.json` 每篇故事必須包含 `id`、`cocktailId`、`title`、`subtitle`、`imageCocktailId`、至少三個 `sections`、`relatedCocktailIds` 與 `sources`。每個章節包含 `title`、`body`、`type`。
+`content/encyclopedia/stories.json` 每篇故事必須包含 `id`、`cocktailId`、`title`、`subtitle`、`imageCocktailId`、至少三個 `sections`、`relatedCocktailIds` 與 `sources`。每個章節包含非空字串 `title`、`body`、`type`（例如 recipe／history／culture）。故事檔案是物件陣列，id 為唯一小寫 kebab-case；sources 是至少一組 `{label,url}` 且 URL 為 HTTPS，relatedCocktailIds 可以為空陣列。
 
 歷史內容必須區分史實、常見說法與未證實傳聞；有爭議時明確寫出「常見說法」或「起源存在多種版本」。不可產生虛假引用、人物或年份。
 
@@ -172,7 +183,9 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 }
 ```
 
-所有 id 都由 `scripts/build.mjs` 驗證存在；推薦不可隨機產生，必須是明確定義且可解釋的關聯。
+`ingredientIds` 與 recipe.ingredients **等長且逐項對齊**，因為 `ingredients()` 按位置建立連結。無百科或不完全相同的材料必須用 null 佔位，不可省略中間位置、不可以近似材料硬連結：例如細砂糖不能連到糖漿，Prosecco 不能連到甜紅苦艾酒。例：`[null, null, "club-soda"]`。
+
+`storyId` 沒有故事時省略；有值時須指向屬於該酒款的故事。`relatedCocktailIds` 可以為空，但不可包含自己。所有非 null id 由 build 驗證存在；推薦必須有明確可解釋的關聯。新增後仍要人工比對材料名稱與百科內容，build 不會辨識語意是否相同。
 
 ## 6. AI Development Rules
 
@@ -207,7 +220,7 @@ AFTER HOURS 是繁體中文的互動式調酒百科，讓讀者探索經典調�
 - 大型修改前先 `git status --short --branch`，確認正確專案，讀取規範、README 與相關程式／資料／圖片。
 - 無 Repository 才 `git init`；既有歷史不可覆寫。檢查 `.gitignore` 與待提交清單，排除敏感資訊、API Keys、系統暫存與依賴，保留酒譜、故事、材料、圖片與規範。
 - 功能修改前建立可還原的 backup commit，重大修改在獨立分支完成。不得擅自丟棄使用者變更。
-- 禁止未核准的 `git reset --hard`、`git clean -fd`、force push、改寫 commit 或刪除資料。不自動建立遠端或推送。
+- 禁止未核准的 `git reset --hard`、`git clean -fd`、force push、改寫 commit 或刪除資料。只有使用者已授權發布時才建立遠端、推送或部署；操作前確認帳號與 Repository，不能推到其他專案。
 - 修改後完成 build/test 和瀏覽器驗收才建立修正 commit，回報前後 commit ID、分支、未完成項目與還原方法。
 - 安全檢視舊版使用 `git worktree add ../after-hours-before <backup-commit>`，不影響目前工作區；正式撤銷已提交修正前先保存新修改，再使用 `git revert <fix-commit>` 建立反向 commit，保留歷史。
 
@@ -237,9 +250,32 @@ node scripts/test.mjs
 
 若測試工具、Node.js 或瀏覽器不可用，必須明確列出未驗證項目，不得宣稱通過。
 
-## 9. Phase 2 Roadmap
+### 瀏覽器回歸
 
-第一階段完成後，再依序規劃：
+參考 README 安裝獨立的 Playwright 驗收依賴與 Google Chrome，啟動 HTTP 後執行：
+
+```sh
+QA_BASE_URL=http://localhost:8000/ PLAYWRIGHT_MODULE=/tmp/after-hours-qa/node_modules/playwright/index.mjs node scripts/browser-test.mjs
+```
+
+`QA_OUT` 可指定證據資料夾，預設 qa。正式部署需用實際 Pages URL 再執行；Node 結構測試通過不代表互動正常。
+
+### GitHub Pages 發布
+
+1. 先通過 build --check、test 及本機瀏覽器驗收，檢查待公開檔案與歷史均無密碼、金鑰、Token、個人附件；不提交 node_modules、.env、憑證。
+2. 確認正確帳號及 remote。使用 Public Repository；根目錄保留 AGENTS.md、README.md、index.html、app.js、styles.css、完整 content、data/catalog.js、assets 和 `.nojekyll`。
+3. 將驗收分支以一般 merge（可 fast-forward）整合至 main，保留所有原有歷史與備份分支；正常 push，不 force push。不需要新增 framework、package.json 或網站 runtime build。
+4. Repository → Settings → Pages → Deploy from a branch → main → /(root) → Save。發布設定由 GitHub 保存，不需另建後端或自訂 Actions。
+5. 等待 Pages build/deployment 成功，再訪問 GitHub 回傳的 https 正式網址。確認 CSS、JavaScript、Hero、所有酒款圖片沒有 404；hash 路由 `#/cocktail/gin-fizz`、`#/stories`、`#/ingredients` 和手機操作正常。
+6. README 和 SUBMISSION_TEMPLATE.md 填入已確認的 Repository、Pages 和根目錄 AGENTS.md 連結，保存驗收結果。未完成部署不得標示發布成功。
+
+資源必須以相對路徑引用，禁止把 localhost、本機絕對路徑或站台根目錄 `/assets` 寫進訪客 runtime；hash router 不需要伺服器 rewrite。Google Fonts 有系統字型回退。開發工具、歷史 qa 報告中的 localhost 不是 runtime 依賴。
+
+官方說明：https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+## 9. 後續構想（本次不實作）
+
+目前已有以標籤距離排序的風味偏好滑桿；下列是未實作的進階構想，不屬於既有功能或本次交付要求：
 
 1. **互動式風味圖譜**：以現有 `flavors`、ingredient id 與 recipe id 建立可鍵盤操作的二維／分群探索；先定義 normalized flavor score，再做視覺化。
 2. **我的調酒實驗室**：保存使用者選定酒款、份量、替換材料與備註；資料只放 localStorage，先設計版本化 schema 與匯出格式。

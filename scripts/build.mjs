@@ -113,7 +113,7 @@ for (const recipe of recipes) {
   const relation = relations[recipe.id];
   if (!relation) throw new Error(`relations.json: missing relation for ${recipe.id}`);
   if (relation.storyId && !storyIds.has(relation.storyId)) throw new Error(`relations.json: ${recipe.id} references missing story`);
-  if (!Array.isArray(relation.ingredientIds) || relation.ingredientIds.some(id => !ingredientIds.has(id))) throw new Error(`relations.json: invalid ingredients for ${recipe.id}`);
+  if (!Array.isArray(relation.ingredientIds) || relation.ingredientIds.length !== recipe.ingredients.length || relation.ingredientIds.some(id => id !== null && !ingredientIds.has(id))) throw new Error(`relations.json: invalid ingredients for ${recipe.id}`);
   if (!Array.isArray(relation.relatedCocktailIds) || relation.relatedCocktailIds.some(id => !recipeIds.has(id) || id === recipe.id)) throw new Error(`relations.json: invalid related cocktails for ${recipe.id}`);
 }
 const result = `// GENERATED from content/recipes/*.json and content/encyclopedia/*.json by node scripts/build.mjs; do not edit directly.\nwindow.COCKTAIL_CATALOG = ${JSON.stringify(recipes, null, 2)};\nwindow.INGREDIENT_CATALOG = ${JSON.stringify(ingredients, null, 2)};\nwindow.STORY_CATALOG = ${JSON.stringify(stories, null, 2)};\nwindow.COCKTAIL_RELATIONS = ${JSON.stringify(relations, null, 2)};\n`;

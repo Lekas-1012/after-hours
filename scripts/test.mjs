@@ -24,6 +24,9 @@ for(const record of records) {
   assert.ok(fs.existsSync(path.join(root,'content','recipes',`${record.id}.json`)),'Original JSON required');
   assert.ok(relations[record.id], 'Cocktail relation required');
 }
+assert.deepEqual(relations.spritz.ingredientIds, [null, null, 'club-soda'], 'Unmapped Spritz ingredients must not link to vermouth');
+assert.equal(relations.daiquiri.ingredientIds[2], null, 'Granulated sugar is not simple syrup');
+assert.equal(relations.cosmopolitan.ingredientIds[3], 'cranberry-juice', 'Cranberry encyclopedia link required');
 const html = fs.readFileSync(path.join(root,'index.html'),'utf8');
 for(const file of ['./styles.css','./app.js','./data/catalog.js']) assert.ok(html.includes(file), `Missing ${file}`);
 const js = fs.readFileSync(path.join(root,'app.js'),'utf8');

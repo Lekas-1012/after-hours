@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const base = process.env.QA_BASE_URL || 'http://127.0.0.1:8016/after-hours/';
-const out = 'qa';
+const out = process.env.QA_OUT || 'qa';
 fs.mkdirSync(out, {recursive:true});
 const browser = await chromium.launch({channel:'chrome', headless:true});
 const report = {base, images:[], checks:[]};
@@ -15,19 +15,22 @@ async function imageInfo(locator, label) {
   await locator.evaluate(i => i.decode());
   const info = await locator.evaluate(i => ({src:i.currentSrc, complete:i.complete, naturalWidth:i.naturalWidth, naturalHeight:i.naturalHeight, hidden:i.hidden, fallbackHidden:i.nextElementSibling.hidden, svgVisible:[...i.parentElement.querySelectorAll('svg')].some(s=>s.getBoundingClientRect().width>0)}));
   assert.ok(info.complete && info.naturalWidth>0 && !info.hidden && info.fallbackHidden && !info.svgVisible, label);
-  assert.ok(info.src.includes('/after-hours/assets/cocktails/'));
+  assert.ok(info.src.startsWith(new URL('assets/cocktails/', base).href));
   report.images.push({label,...info});
 }
 try {
  for (const [device,width,height] of [['desktop',1440,1000],['mobile',390,844]]) {
   const context=await browser.newContext({viewport:{width,height}});
   const page=await context.newPage(); const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+  page.on('console',m=>{if(m.type()==='error') errors.push(m.text())});
+  page.on('response',r=>{if(r.url().startsWith(base) && r.status()>=400) errors.push(`${r.status()} ${r.url()}`)});
   await route(page,'#/'); await page.locator('.hero-bg img').evaluate(i=>i.decode()); await page.screenshot({animations:'disabled',path:`${out}/hero-${device}.png`});
   const initial=await page.locator('.hero-bg').evaluate(e=>getComputedStyle(e).transform);
   await page.evaluate(()=>scrollTo(0,250)); await page.waitForTimeout(150);
   assert.notEqual(await page.locator('.hero-bg').evaluate(e=>getComputedStyle(e).transform),initial);
   const motion=await page.evaluate(()=>({bg:getComputedStyle(document.querySelector('.hero-bg')).transform,copy:getComputedStyle(document.querySelector('.hero-content')).transform}));
   report.checks.push(`${device} parallax ${JSON.stringify(motion)}`);
+  assert.ok(Math.abs(await page.locator('.topbar').evaluate(e=>e.getBoundingClientRect().top))<1, 'topbar actually sticks');
   await page.locator('#recipe-search').fill('Gin Fizz');
   assert.equal(await page.locator('#cards-grid .cocktail-card').count(),1);
   await imageInfo(page.locator('#cards-grid img'),'search '+device);
@@ -57,7 +60,10 @@ try {
   await imageInfo(page.locator('.detail-painting'),'related '+device);
   await route(page,'#/stories');await page.locator('.story-card').first().click();
   await page.waitForURL('**/#/story/story-gin-fizz');
-  if(width>820) assert.equal(await page.locator('.story-stage').evaluate(e=>getComputedStyle(e).position),'sticky');
+  if(width>820) {
+    await page.locator('.story-reader').evaluate(e=>scrollTo({top:e.offsetTop+250,behavior:'instant'})); await page.waitForTimeout(150);
+    assert.ok(Math.abs(await page.locator('.story-stage').evaluate(e=>e.getBoundingClientRect().top)-105)<2,'story stage actually sticks');
+  }
   await page.locator('[data-story-chapter="2"]').focus();
   assert.equal(await page.locator('#story-stage-title').innerText(),await page.locator('[data-story-chapter="2"] h2').innerText());
   if(width<820){await page.locator('.menu-toggle').click();assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'true');await page.keyboard.press('Escape');assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');await page.locator('.menu-toggle').focus();await page.keyboard.press('Enter');await page.locator('.nav a[href="#/ingredients"]').click();assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');}
@@ -71,6 +77,19 @@ try {
  const page=await browser.newPage({viewport:{width:1440,height:1000}});await route(page,'#/');
  for(const img of await page.locator('#cards-grid img').all()) await imageInfo(img,'collection');
  await page.locator('#cards-grid').screenshot({animations:'disabled',path:`${out}/collection-desktop.png`});
+ const data=await page.evaluate(()=>({recipes:window.COCKTAIL_CATALOG,stories:window.STORY_CATALOG,ingredients:window.INGREDIENT_CATALOG}));
+ for(const recipe of data.recipes) {
+   await route(page,'#/cocktail/'+recipe.id); await imageInfo(page.locator('.detail-painting'),'all details '+recipe.id);
+   const links=await page.locator('#ingredient-list li').evaluateAll(rows=>rows.map(r=>r.querySelector('a')?.getAttribute('href')||null));
+   if(recipe.id==='spritz') assert.deepEqual(links,[null,null,'#/ingredient/club-soda']);
+   if(recipe.id==='daiquiri') assert.equal(links[2],null);
+   if(recipe.id==='cosmopolitan') assert.equal(links[3],'#/ingredient/cranberry-juice');
+ }
+ for(const story of data.stories) {await route(page,'#/story/'+story.id);await imageInfo(page.locator('.story-stage-art img'),'all stories '+story.id);}
+ for(const ingredient of data.ingredients) {await route(page,'#/ingredient/'+ingredient.id);assert.ok(await page.locator('.ingredient-history').innerText());}
+ check('all 11 detail paintings, 4 story paintings, 17 ingredient pages and corrected material links');
+ await route(page,'#/');
+
  // A real failed request must produce fallback, then a later load must recover the SAME node.
  await page.route('**/assets/cocktails/gin-fizz.jpg',r=>r.abort());
  await page.locator('#recipe-search').fill('Gin Fizz');const img=page.locator('#cards-grid img');await page.locator('#cards-grid').scrollIntoViewIfNeeded();await page.waitForTimeout(400);
@@ -80,6 +99,7 @@ try {
  check('real request failure and successful recovery: card and detail');
  await page.emulateMedia({reducedMotion:'reduce'});await route(page,'#/');await page.evaluate(()=>scrollTo(0,250));await page.waitForTimeout(150);
  assert.equal(await page.locator('.hero-bg').evaluate(e=>getComputedStyle(e).transform),'none');assert.equal(await page.locator('.hero-content').evaluate(e=>getComputedStyle(e).opacity),'1');
- check('reduced motion: no hero transforms or scroll fading');
+ await route(page,'#/story/story-gin-fizz');await page.evaluate(()=>scrollTo(0,650));await page.waitForTimeout(150);assert.equal(await page.locator('.story-stage-art').evaluate(e=>getComputedStyle(e).transform),'none');
+ check('reduced motion: no hero/story transforms or hero scroll fading');
  fs.writeFileSync(`${out}/browser-report.json`,JSON.stringify(report,null,2));console.log(JSON.stringify({checks:report.checks,images:report.images.length},null,2));
 } finally {await browser.close()}

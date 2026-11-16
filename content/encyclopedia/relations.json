@@ -1,13 +1,13 @@
 {
   "gin-fizz": {"storyId": "story-gin-fizz", "ingredientIds": ["gin", "lemon-juice", "simple-syrup", "club-soda"], "relatedCocktailIds": ["daiquiri", "whiskey-sour", "paloma"]},
   "negroni": {"storyId": "story-negroni", "ingredientIds": ["gin", "campari", "sweet-vermouth"], "relatedCocktailIds": ["boulevardier", "manhattan"]},
-  "daiquiri": {"storyId": "story-daiquiri", "ingredientIds": ["white-rum", "lime-juice", "simple-syrup"], "relatedCocktailIds": ["margarita", "whiskey-sour"]},
+  "daiquiri": {"storyId": "story-daiquiri", "ingredientIds": ["white-rum", "lime-juice", null], "relatedCocktailIds": ["margarita", "whiskey-sour"]},
   "margarita": {"storyId": "story-margarita", "ingredientIds": ["tequila", "triple-sec", "lime-juice"], "relatedCocktailIds": ["paloma", "cosmopolitan", "daiquiri"]},
   "boulevardier": {"ingredientIds": ["whiskey", "campari", "sweet-vermouth"], "relatedCocktailIds": ["negroni", "manhattan"]},
   "manhattan": {"ingredientIds": ["whiskey", "sweet-vermouth", "angostura-bitters"], "relatedCocktailIds": ["boulevardier", "negroni"]},
   "whiskey-sour": {"ingredientIds": ["whiskey", "lemon-juice", "simple-syrup"], "relatedCocktailIds": ["daiquiri", "manhattan"]},
-  "cosmopolitan": {"ingredientIds": ["vodka", "triple-sec", "lime-juice"], "relatedCocktailIds": ["margarita", "daiquiri"]},
-  "espresso-martini": {"ingredientIds": ["vodka", "coffee-liqueur", "simple-syrup"], "relatedCocktailIds": ["cosmopolitan", "manhattan"]},
-  "paloma": {"ingredientIds": ["tequila", "lime-juice", "grapefruit-soda"], "relatedCocktailIds": ["margarita", "daiquiri"]},
-  "spritz": {"ingredientIds": ["sweet-vermouth"], "relatedCocktailIds": ["negroni", "paloma"]}
+  "cosmopolitan": {"ingredientIds": ["vodka", "triple-sec", "lime-juice", "cranberry-juice"], "relatedCocktailIds": ["margarita", "daiquiri"]},
+  "espresso-martini": {"ingredientIds": ["vodka", "coffee-liqueur", "simple-syrup", null], "relatedCocktailIds": ["cosmopolitan", "manhattan"]},
+  "paloma": {"ingredientIds": ["tequila", "lime-juice", "grapefruit-soda", null], "relatedCocktailIds": ["margarita", "daiquiri"]},
+  "spritz": {"ingredientIds": [null, null, "club-soda"], "relatedCocktailIds": ["negroni", "paloma"]}
 }

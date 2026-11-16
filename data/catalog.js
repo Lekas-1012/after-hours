@@ -1201,7 +1201,7 @@ window.COCKTAIL_RELATIONS = {
     "ingredientIds": [
       "white-rum",
       "lime-juice",
-      "simple-syrup"
+      null
     ],
     "relatedCocktailIds": [
       "margarita",
@@ -1258,7 +1258,8 @@ window.COCKTAIL_RELATIONS = {
     "ingredientIds": [
       "vodka",
       "triple-sec",
-      "lime-juice"
+      "lime-juice",
+      "cranberry-juice"
     ],
     "relatedCocktailIds": [
       "margarita",
@@ -1269,7 +1270,8 @@ window.COCKTAIL_RELATIONS = {
     "ingredientIds": [
       "vodka",
       "coffee-liqueur",
-      "simple-syrup"
+      "simple-syrup",
+      null
     ],
     "relatedCocktailIds": [
       "cosmopolitan",
@@ -1280,7 +1282,8 @@ window.COCKTAIL_RELATIONS = {
     "ingredientIds": [
       "tequila",
       "lime-juice",
-      "grapefruit-soda"
+      "grapefruit-soda",
+      null
     ],
     "relatedCocktailIds": [
       "margarita",
@@ -1289,7 +1292,9 @@ window.COCKTAIL_RELATIONS = {
   },
   "spritz": {
     "ingredientIds": [
-      "sweet-vermouth"
+      null,
+      null,
+      "club-soda"
     ],
     "relatedCocktailIds": [
       "negroni",

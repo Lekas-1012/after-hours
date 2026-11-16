@@ -71,7 +71,7 @@ h1, h2, h3, p { margin-top: 0; }
 .wrap { width: min(1240px, calc(100% - 96px)); margin: 0 auto; }
 .skip-link { position: absolute; left: -10000px; top: 12px; z-index: 100; background: #fff; color: #000; padding: 10px; }
 .skip-link:focus { left: 12px; }
-.site-shell { overflow: hidden; }
+.site-shell { overflow: clip; }
 
 /* --- Top Bar --- */
 .topbar {
@@ -954,5 +954,5 @@ h1, h2, h3, p { margin-top: 0; }
   .hero-bg img { transform: none; }
   .hero-content { opacity: 1; }
   .hero-content { transform: none; }
-  .story-stage-art img, .story-stage-copy { transform: none; }
+  .story-stage-art, .story-stage-art img, .story-stage-copy { transform: none; }
 }
